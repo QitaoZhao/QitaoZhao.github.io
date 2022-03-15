@@ -1,0 +1,6 @@
+__pycache__/
+*.pth
+*.h5
+*.gz
+.DS_Store
+Report.md
