@@ -1,0 +1,207 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="style_project_page.css" media="screen"/>
+<link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
+<link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
+
+
+<html lang="en">
+<head>
+	<title>A Single 2D Pose with Context is Worth Hundreds for 3D Human Pose Estimation</title>
+    <link rel="icon" type="image/png" href="research/PoseFormerV2/figures/Thinking_Face.jpg">
+
+    <meta charset="UTF-8">
+
+    <!-- Add your Google Analytics tag here -->
+    <!-- <script async
+            src=""></script> -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-97476543-1');
+    </script>
+
+</head>
+
+<body>
+<div class="container">
+    <h1 class="project-title">
+        A Single 2D Pose with Context is Worth Hundreds <br>for 3D Human Pose Estimation
+    </h1>
+
+    <div class="conference">
+        In NeurIPS 2023
+    </div>
+
+    <br><br>
+
+
+    <div class="authors">
+        <a href=https://qitaozhao.github.io>
+            Qitao Zhao <sup>1</sup>
+        </a>
+        <a href=https://zczcwh.github.io/>
+            Ce Zheng <sup>2</sup>
+        </a>
+        <a href=https://humanperception.github.io/>
+            Mengyuan Liu <sup>3</sup>
+        </a>
+        </a>
+        <a href=https://www.crcv.ucf.edu/chenchen//>
+            Chen Chen <sup>2</sup>
+        </a>
+    </div>
+    <br>
+
+    <div class="affiliations">
+        <span><sup>1</sup> Robotics Institute, Carnegie Mellon University</span></br>
+        <span><sup>2</sup> Center for Research in Computer Vision, University of Central Florida</span> </br>
+        <span><sup>3</sup> Key Laboratory of Machine Perception, Peking University, Shenzhen Graduate School</span> </br>
+    </div>
+    <br><br>
+
+    <div class="project-icons">
+        <a href="https://qitaozhao.github.io">
+            <i class="fa fa-file-pdf-o"></i> <br/>
+            Paper
+        </a>
+        <a href="https://qitaozhao.github.io">
+            <i class="fa fa-github"></i> <br/>
+            Code <br/>
+        </a>
+        <a href="https://qitaozhao.github.io">
+            <i class="fa fa-youtube-play"></i> <br/>
+            Video
+        </a>
+    </div>
+
+    <div class="teaser">
+        <br>
+        <p style="width: 90%; text-align: left;">
+            We introduce <b>Context-Aware PoseFormer</b> which, <b>without access to temporal information</b>, outperforms both single-frame and multi-frame methods that use up to <b>hundreds of video frames</b>. The key insight of our method is to reuse intermediate visual representations learned by 2D pose detectors in an <b>out-of-the-box</b> manner.
+            <br>
+        <br> 
+        <img src="./research/ContextAware-PoseFormer/figures/framework.png" alt="Teaser figure."/>
+
+        <p style="width: 90%; text-align: left;">
+            A comparison between previous methods (a) and our method (b) at a framework level. Previous methods discard the learned representations produced by 2D pose detectors and heavily rely on long-term temporal information. We retrieve such visual representations and engage them in the lifting process. We selectively extract joint-context features from feature maps, enabling our single-frame model to outperform video-based models with extremely large frame number. Note that we do not fine-tune the feature maps on the 3D task.
+        <br>
+
+    </div>
+
+    <br><br>
+    
+    <hr>
+    <h1>Abstract</h1>
+
+    <p style="width: 85%">
+        The dominant paradigm in 3D human pose estimation that lifts a 2D pose sequence to 3D heavily relies on long-term temporal clues (i.e., daunting number of video frames) for improved accuracy, which incurs performance saturation, intractable computation and the non-causal problem. This can be attributed to their inherent inability to perceive spatial context as plain 2D joint coordinates carry no visual cues. To address this issue, we propose a straightforward yet powerful solution: leveraging the <i>readily available</i> intermediate visual representations produced by off-the-shelf (pre-trained) 2D pose detectors -- no finetuning on the 3D task is even needed. The key observation is that, while the pose detector learns to localize 2D joints, such representations (e.g., feature maps) implicitly encode the joint-centric spatial context thanks to the regional operations in backbone networks. We design a simple baseline named <b>Context-Aware PoseFormer</b> to showcase its effectiveness. <i>Without access to any temporal information</i>, the proposed method significantly outperforms its context-agnostic counterpart, PoseFormer [1], and other state-of-the-art methods using up to <i>hundreds of</i> video frames regarding both speed and precision. </p>
+    <br>
+    </p>
+
+    <hr>
+    <h1>Overview</h1>
+    <img src="./images/context-aware poseformer.png" style="width: 85%" alt="Overview."/></br>
+    <p style="width: 85%">
+        An overview of Context-Aware PoseFormer. Stage 1 (left): The 2D pose detector estimates the 2D pose, with a set of feature maps as byproducts. In Stage 2 (right), we extract informative join-context features from such feature maps using deformable operations, and subsequently fuse them with the 2D pose embedding that encodes the positional information of human joints.</p></br>
+
+    <h1>Quantitative Results</h1>
+    <img src="./research/ContextAware-PoseFormer/figures/teaser.png" style="width: 60%" alt="Fig1."/></br>
+    <p style="width: 85%; text-align: center;">
+        Our single-frame method outperforms both non-temporal and temporal methods that use up to 351 frames on Human3.6M.</p></br>
+
+    <h1>Qualitative Results</h1>
+    <img src="./research/ContextAware-PoseFormer/figures/vis_h36m.png" style="width: 85%" alt="PoseFormerV2 features."/></br>
+    <p style="width: 85%">
+        Qualitative comparison with MHFormer (351 frames) [2] and our context-agnostic counterpart (please refer to Sec. 4.3 in the paper for more details) on Human3.6M. Our method obtains reliable results despite severe self-occlusion, which may cause false 2D joint detection. Notable parts are indicated by arrows.</p></br>
+
+    <img src="./research/ContextAware-PoseFormer/figures/vis_mpi.png" style="width: 85%" alt="PoseFormerV2 features."/>
+    <p style="width: 85%">
+        Qualitative comparison with P-STMO (81 frames) [3] on MPI-INF-3DHP. Our method infers correct results given rare poses (e.g., the subject is lying on the ground and relaxing on the couch). Notable parts are indicated by arrows or circles.</p></br>
+
+    <img src="./research/ContextAware-PoseFormer/figures/vis_in_the_wild.png" style="width: 85%" alt="PoseFormerV2 features."/>
+    <p style="width: 85%">
+        Comparison with PoseFormer [1] on in-the-wild videos. The 2D pose detector fails to localize 2D joints, given <i>confusing clothing</i> (left) and severe <i>self-occlusion</i> (right). Our method is more robust in such hard cases. False joint detection is indicated by yellow arrows, and the corresponding 3D joint estimation is indicated by orange arrows.</p></br>
+
+    <!-- <hr>
+    <h1>Video</h1>
+
+
+    <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/2xVNrGpGldM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div></br>
+
+    <p style="width: 85%">
+        In the following, we provide the demo at the end of the introduction video. Here we add strong Gaussian noise to the detected 2D human pose and our method shows a suprisingly good <b>temporal consistency</b> under highly unreliable 2D detection.</p>
+    <img src="./research/PoseFormerV2/figures/basketball.gif" style="width:85%;" height="40%"> -->
+
+    <br>
+
+    <hr>
+    <h1>Paper</h1>
+       <!-- <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Ma_The_Power_of_Points_for_Modeling_Humans_in_Clothing_ICCV_2021_paper.pdf"> -->
+        <!-- <img src="research/PoseFormerV2/figures/paper_snapshot_1x8.jpg" style="width:85%;" height="auto"></a> -->
+
+       <div class="paper-info">
+       <!-- <br> -->
+       <span style="font-size: 14pt; font-weight: bold;">A Single 2D Pose with Context is Worth Hundreds for 3D Human Pose Estimation</span><br>
+       <span style="font-size: 14pt;"> Qitao Zhao, Ce Zheng, Mengyuan Liu, Chen Chen. </span>  <br>
+       <span style="font-size: 14pt;">In NeurIPS 2023</span> 
+       <!-- <br> -->
+   <!--     <span style="font-size: 14pt;">
+        <a href="https://openaccess.thecvf.com/content/ICCV2021/papers/Ma_The_Power_of_Points_for_Modeling_Humans_in_Clothing_ICCV_2021_paper.pdf" target="_blank" rel="noopener">[Paper (CVF Version)]</a>&nbsp; <a href="https://openaccess.thecvf.com/content/ICCV2021/supplemental/Ma_The_Power_of_ICCV_2021_supplemental.pdf" target="_blank" rel="noopener">[Supp]</a>&nbsp;
+       <a href="https://arxiv.org/abs/2109.01137" target="_blank" rel="noopener">[arXiv]<br /></a> -->
+    
+       <pre><code>@inproceedings{
+    zhao2023contextaware,
+    title={A Single 2D Pose with Context is Worth Hundreds for 3D Human Pose Estimation},
+    author={Zhao, Qitao and Zheng, Ce and Liu, Mengyuan and Chen, Chen},
+    booktitle={Thirty-seventh Conference on Neural Information Processing Systems},
+    year={2023},
+}
+</code></pre>
+</div>
+
+    <br><br>
+
+    <hr>
+    <h1>References</h1>
+    <p style="width: 85%;text-align:left; ">
+        [1] Ce Zheng, Sijie Zhu, Matias Mendieta, Taojiannan Yang, Chen Chen, and Zhengming Ding. <b>3d human pose estimation with spatial and temporal transformers</b>. In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), pages 11656–11665, October 2021.<br>
+
+        [2] Wenhao Li, Hong Liu, Hao Tang, Pichao Wang, and Luc Van Gool. <b>Mhformer: Multi-hypothesis transformer for 3d human pose estimation</b>. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pages 13147–13156, June 2022.<br>
+
+        [3] Wenkang Shan, Zhenhua Liu, Xinfeng Zhang, Shanshe Wang, Siwei Ma, and Wen Gao. <b>P-stmo: Pre-trained spatial temporal many-to-one model for 3d human pose estimation</b>. In Computer Vision–ECCV 2022: 17th European Conference, Tel Aviv, Israel, October 23–27, 2022, Proceedings, Part V, pages 461–478. Springer, 2022.<br><br>
+
+    <!-- <b><a href="https://cape.is.tue.mpg.de/">Learning to Dress 3D People in Generative Clothing (CVPR 2020)</a></b> <br>
+    <i>Qianli Ma, Jinlong Yang, Anurag Ranjan, Sergi Pujades, Gerard Pons-Moll, Siyu Tang, Michael J. Black</i><br>
+    CAPE &mdash; a generative model and a large-scale dataset for 3D clothed human meshes in varied poses and garment types. 
+    We trained POP using the <a href="https://cape.is.tue.mpg.de/dataset">CAPE dataset</a>, check it out! -->
+
+    </p>
+
+    <!-- <br><br> -->
+    <hr>
+    <h1>Acknowledgements</h1>
+
+    <p style="width: 85%;">
+        The work was done while Qitao was a research intern mentored by Chen Chen.
+        Qitao acknowledges the insightful advices from co-authors and NeurIPS'23 reviewers.
+        The webpage template is adapted from 
+        <a href="https://qianlim.github.io/POP">POP</a>.
+    
+    </p>
+
+    <br><br>
+</div>
+
+</body>
+
+</html>
