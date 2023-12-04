@@ -76,38 +76,38 @@
             <i class="fa fa-github"></i> <br/>
             Code <br/>
         </a>
-        <a href="https://qitaozhao.github.io">
+        <a href="https://recorder-v3.slideslive.com/?share=87185&s=6df19fee-f7ae-4be9-af4e-3a89fd626400">
             <i class="fa fa-youtube-play"></i> <br/>
-            Video (in preparation)
+            Video
         </a>
     </div>
 
+    <h1>Poster</h1>
+
     <div class="teaser">
+        <img src="./research/ContextAware-PoseFormer/figures/poster.png" alt="Teaser figure."/>
         <br>
         <p style="width: 90%; text-align: left;">
-            We introduce <b>Context-Aware PoseFormer</b> which, <b>without access to temporal information</b>, outperforms both single-frame and multi-frame methods that use up to <b>hundreds of video frames</b>. The key insight of our method is to reuse intermediate visual representations learned by 2D pose detectors in an <b>out-of-the-box</b> manner.
+            <b>tl;dr</b> We introduce <b>Context-Aware PoseFormer</b> which, <b>with as few as a single input image</b>, outperforms both single-frame and multi-frame methods that use up to <b>hundreds of video frames</b>. The key insight of our method is to reuse intermediate visual representations learned by 2D pose detectors in an <b>out-of-the-box</b> manner.
             <br>
-        <br> 
-        <img src="./research/ContextAware-PoseFormer/figures/framework.png" alt="Teaser figure."/>
-
-        <p style="width: 90%; text-align: left;">
-            A comparison between previous methods (a) and our method (b) at a framework level. Previous methods discard the learned representations produced by 2D pose detectors and heavily rely on long-term temporal information. We retrieve such visual representations and engage them in the lifting process. We selectively extract joint-context features from feature maps, enabling our single-frame model to outperform video-based models with extremely large frame number. Note that we do not fine-tune the feature maps on the 3D task.
         <br>
-
     </div>
 
-    <br><br>
-    
     <hr>
     <h1>Abstract</h1>
-
     <p style="width: 85%">
         The dominant paradigm in 3D human pose estimation that lifts a 2D pose sequence to 3D heavily relies on long-term temporal clues (i.e., daunting number of video frames) for improved accuracy, which incurs performance saturation, intractable computation and the non-causal problem. This can be attributed to their inherent inability to perceive spatial context as plain 2D joint coordinates carry no visual cues. To address this issue, we propose a straightforward yet powerful solution: leveraging the <i>readily available</i> intermediate visual representations produced by off-the-shelf (pre-trained) 2D pose detectors -- no finetuning on the 3D task is even needed. The key observation is that, while the pose detector learns to localize 2D joints, such representations (e.g., feature maps) implicitly encode the joint-centric spatial context thanks to the regional operations in backbone networks. We design a simple baseline named <b>Context-Aware PoseFormer</b> to showcase its effectiveness. <i>Without access to any temporal information</i>, the proposed method significantly outperforms its context-agnostic counterpart, PoseFormer [1], and other state-of-the-art methods using up to <i>hundreds of</i> video frames regarding both speed and precision. </p>
     <br>
-    </p>
 
     <hr>
-    <h1>Overview</h1>
+    <h1>Framework</h1>
+    <img src="./research/ContextAware-PoseFormer/figures/framework.png" style="width: 85%" alt="Teaser figure."/>
+    <p style="width: 85%">
+        A comparison between previous methods (a) and our method (b) at a framework level. Previous methods discard the learned representations produced by 2D pose detectors and heavily rely on long-term temporal information. We retrieve such visual representations and engage them in the lifting process. We selectively extract joint-context features from feature maps, enabling our single-frame model to outperform video-based models with extremely large frame number. Note that we do not fine-tune the feature maps on the 3D task.</p>
+    <br>
+
+    <hr>
+    <h1>Method Overview</h1>
     <img src="./images/context-aware poseformer.png" style="width: 85%" alt="Overview."/></br>
     <p style="width: 85%">
         An overview of Context-Aware PoseFormer. Stage 1 (left): The 2D pose detector estimates the 2D pose, with a set of feature maps as byproducts. In Stage 2 (right), we extract informative join-context features from such feature maps using deformable operations, and subsequently fuse them with the 2D pose embedding that encodes the positional information of human joints.</p></br>
