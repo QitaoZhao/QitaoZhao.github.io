@@ -1,70 +1,515 @@
-<script src="http://www.google.com/jsapi" type="text/javascript"></script>
-<script type="text/javascript">google.load("jquery", "1.3.2");</script>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap"
-      rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style_project_page.css" media="screen"/>
-<link href="https://fonts.googleapis.com/css?family=Arvo|Roboto&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/jpswalsh/academicons/master/css/academicons.min.css">
-<link rel="stylesheet" href="https://unpkg.com/@glidejs/glide/dist/css/glide.core.min.css">
-
-
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<title>Sparse-view Pose Estimation and Reconstruction via Analysis by Generative Synthesis</title>
-    <link rel="icon" type="image/png" href="research/PoseFormerV2/figures/Thinking_Face.jpg">
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Sparse view reconstruction via diffusion distillation.">
+  <meta name="keywords" content="Sparse view, reconstruction, diffusion, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparse-view Pose Estimation and Reconstruction via Analysis by Generative Synthesis</title>
 
-    <meta charset="UTF-8">
 
-    <!-- Add your Google Analytics tag here -->
-    <!-- <script async
-            src=""></script> -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-97476543-1');
-    </script>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YXDZHQRVSJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YXDZHQRVSJ');
+</script>
+
 <body>
-<div class="container">
-    <h1 class="project-title">
-        Sparse-view Pose Estimation and Reconstruction </br>via Analysis by Generative Synthesis
-    </h1>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="index.html">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
 
-    <div class="conference">
-        In NeurIPS 2024
-    </div>
-
-    <br><br>
-
-
-    <div class="authors">
-        <a href=https://qitaozhao.github.io>
-            Qitao Zhao
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
         </a>
-        <a href=https://shubhtuls.github.io/>
-            Shubham Tulsiani
-        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="#">
+            #
+          </a>
+          <a class="navbar-item" href="#">
+            #
+          </a>
+          <a class="navbar-item" href="#">
+            #
+          </a>
+          <a class="navbar-item" href="#">
+            #
+          </a>
+        </div>
+      </div> -->
     </div>
-    <br>
 
-    <div class="affiliations">
-        <span>Carnegie Mellon University</span></br>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Sparse-view Pose Estimation and Reconstruction via Analysis by Generative Synthesis</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://qitaozhao.github.io/" target="_blank">Qitao Zhao</a>,</span>
+            <span class="author-block">
+              <a href="https://shubhtuls.github.io/" target="_blank">Shubham Tulsiani</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Carnegie Mellon University</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">NeurIPS 2024</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://openreview.net/pdf?id=wgpmDyJgsg"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv (coming soon)</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://qitaozhao.github.io/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+              <!-- <span class="link-block">
+                <a href="diverse.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>Random Results</span>
+                  </a>
+              </span> -->
+
+              <!-- <span class="link-block">
+                <a href="comparison.html"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>Random Comparisons</span>
+                  </a>
+              </span> -->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
     </div>
-    <br><br>
+  </div>
+</section>
 
-    <h1>Project Page Coming Soon...</h1>
-    
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./research/SparseAGS/figures/teaser_cr3.pdf" alt="Teaser figure."/>
+      <h5 class="">
+        <b>tl;dr</b> Given a set of unposed input images, <strong>SparseAGS</strong> jointly infers the corresponding camera poses and underlying 3D, allowing high-fidelity 3D inference in the wild.
+      </h5>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-one">
+          <video poster="" id="one" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser1.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-two">
+          <video poster="" id="two" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-three">
+          <video poster="" id="three" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser3.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-four">
+          <video poster="" id="four" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser4.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-five">
+          <video poster="" id="five" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser5.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-six">
+          <video poster="" id="six" autoplay muted loop playsinline height="100%">
+            <source src="static/images/teaser6.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!-- <div class="item item-seven">
+          <video poster="" id="seven" autoplay muted loop playsinline height="100%">
+            <source src="static/images/focus-seven.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-eight">
+          <video poster="" id="eight" autoplay muted loop playsinline height="100%">
+            <source src="static/images/focus-eight.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+        <!-- <div class="item item-nine">
+          <video poster="" id="nine" autoplay muted loop playsinline height="100%">
+            <source src="static/images/focus-nine.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <div class="item item-ten">
+          <video poster="" id="ten" autoplay muted loop playsinline height="100%">
+            <source src="static/images/focus-ten.mp4"
+                    type="video/mp4">
+          </video>
+        </div> -->
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Inferring the 3D structure underlying a set of multi-view images typically requires solving two co-dependent tasks -- accurate 3D reconstruction requires precise camera poses, and predicting camera poses relies on (implicitly or explicitly) modeling the underlying 3D. The classical framework of analysis by synthesis casts this inference as a joint optimization seeking to explain the observed pixels, and recent instantiations learn expressive 3D representations (e.g., Neural Fields) with gradient-descent-based pose refinement of initial pose estimates. However, given a sparse set of observed views, the observations may not provide sufficient direct evidence to obtain complete and accurate 3D. Moreover, large errors in pose estimation may not be easily corrected and can further degrade the inferred 3D. To allow robust 3D reconstruction and pose estimation in this challenging setup, we propose <em>SparseAGS</em>, a method that adapts this analysis-by-synthesis approach by: a) including novel-view-synthesis-based generative priors in conjunction with photometric objectives to improve the quality of the inferred 3D, and b) explicitly reasoning about outliers and using a discrete search with a continuous optimization-based strategy to correct them. We validate our framework across real-world and synthetic datasets in combination with several off-the-shelf pose estimation systems as initialization. We find that it significantly improves the base systems' pose accuracy while yielding high-quality 3D reconstructions that outperform the results from current multi-view reconstruction baselines.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/5077xFjWsIs"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div> -->
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+
+        <!-- Subsection. -->
+        <!-- <h3 class="title is-4">Comparison Against Existing Methods</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            <strong>(a) Overview of SparseAGS:</strong> Given estimated camera poses from off-the-shelf models, our method iteratively reconstructs 3D and optimizes poses leveraging diffusion priors. <strong>(b) Detailed View of Each Component:</strong> We use rendering loss and multi-view SDS loss for 3D reconstruction while the rendering loss is propagated back to refine camera poses. At the end of each reconstruction iteration, we identify outliers by checking if their involvement in 3D inference yields larger errors in other views, implying the inconsistency of their poses with others.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/SparseAGS/figures/framework_final.pdf" alt="Method figure."/>
+        </div>
+        <!--/ Subsection. -->
+      </div>
+    </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <!-- <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Left</h2>
+          <p>
+            p
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="#"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div> -->
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <!-- <div class="column">
+        <h2 class="title is-3">Right</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              p
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src=""
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div> -->
+    <!--/ Matting. -->
+
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Results</h2>
+
+        <!-- Subsection. -->
+        <h3 class="title is-4">Qualitative Comparison on Camera Pose Accuracy</h3>
+        <div class="content has-text-justified">
+          <p>
+            We compare DiffusionSfM on pose accuracy with SPARF. Our method can deal with initial camera poses with large errors. 
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/SparseAGS/figures/vis_compare_sparf_cr.pdf" alt="SPARF Comparison figure."/>
+        </div>
+        <!--/ Subsection. -->
+
+        <!-- Subsection. -->
+        <h3 class="title is-4">Qualitative Comparison on Novel View Synthesis</h3>
+        <div class="content has-text-justified">
+          <p>
+            We compare DiffusionSfM on novel view synthesis with LEAP. Our method can preserve high-quality details from input images. Please refer to our paper for more comparisons with SPARF and UpFusion.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+            <div class="content has-text-centered">
+          <img src="./research/SparseAGS/figures/vis_compare_leap_cr.pdf" alt="LEAP Comparison figure."/>
+        </div>
+          <!-- <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="static/images/comp_v10_core.mp4"
+                    type="video/mp4">
+          </video> -->
+        </div>
+        <!--/ Subsection. -->
+
+        <!-- Subsection. -->
+        <h3 class="title is-4">Additional Results</h3>
+        <div class="content has-text-justified">
+          <!-- <p>
+            Please see randomly selected results from all 51 categories <a href="diverse.html">here</a>. 
+          </p> -->
+        </div>
+        <div class="content has-text-centered">
+          <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="static/images/additional_results.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Subsection. -->
+
+        <!-- Subsection. -->
+        <h3 class="title is-4">Ablation Study</h3>
+        <div class="content has-text-justified">
+          <!-- <p>
+            Please see randomly selected results from all 51 categories <a href="diverse.html">here</a>. 
+          </p> -->
+        </div>
+        <div class="content has-text-centered">
+          <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="static/images/ablation_study.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Subsection. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <!-- <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+        </div>
+      </div>
+    </div>
+    </div> -->
+
+</section>
+
+
+
+
+<section class="section" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h3 class="title">Related Links</h2>
+    <p>Our 3D reconstruction pipeline is built on top of <a href="https://arxiv.org/pdf/2309.16653" target="_blank">DreamGaussian</a> and <a href="https://github.com/ashawkey/stable-dreamfusion" target="_blank">Stable-DreamFusion</a>. Additionally, we fine-tuned and utilized the novel-view generative priors from <a href="https://arxiv.org/pdf/2303.11328" target="_blank">Zero123</a>. We sincerely appreciate the authors' efforts in open-sourcing their code. </p>
+    <!-- <p><a href="https://dreamfusion3d.github.io/" target="_blank">DreamFusion</a>, <a href="https://deepimagination.cc/Magic3D/" target="_blank">Magic3D</a>, and <a href="https://pals.ttic.edu/p/score-jacobian-chaining" target="_blank">SJC</a> lifts 2D to 3D with large-scale diffusion models, enabling text-to-3d generation.</p>
+    <p><a href="https://3d-diffusion.github.io/" target="_blank">3DiM</a> applies 2D diffusion models for multi-view consistent novel view synthesis.</p>
+    <p><a href="https://jryanshue.com/nfd/" target="_blank">NFD</a> trains a triplane diffusion model to directly generate a 3D neural field.</p>
+  </div> -->
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h3 class="title">BibTeX</h3>
+    <pre>
+<code>@inproceedings{zhao2024sparseags,
+  title={Sparse-view Pose Estimation and Reconstruction via Analysis by Generative Synthesis}, 
+  author={Qitao Zhao and Shubham Tulsiani},
+  booktitle={NeurIPS},
+  year={2024}
+}</code></pre>
+  </div>
+</section>
+
+<section class="column" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h3 class="title">Acknowledgements</h2>
+    <p>We thank Zihan Wang and the members of the Physical Perception Lab at CMU for their valuable discussions. We especially appreciate Amy Lin and Zhizhuo (Z) Zhou for their assistance in creating figures, as well as Yanbo Xu and Jason Zhang for their feedback on the draft. We also thank Hanwen Jiang for his support in setting up the LEAP baseline for comparison.</p>
+
+    <p>This work was supported in part by NSF Award IIS-2345610. This work used Bridges-2 at Pittsburgh Supercomputing Center through allocation CIS240166 from the Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support (ACCESS) program, which is supported by National Science Foundation grants #2138259, #2138286, #2138307, #2137603, and #2138296.
     </p>
+  </div>
+</section>
 
-    <br><br>
-</div>
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/abs/2212.00792">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/zhizdev/sparsefusion" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is made from this template <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
 
 </body>
-
 </html>
