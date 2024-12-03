@@ -144,12 +144,12 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="https://qitaozhao.github.io/"
+                <a href="https://github.com/QitaoZhao/SparseAGS"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
                   </span>
-                  <span>Code (Coming Soon)</span>
+                  <span>Code</span>
                   </a>
               </span>
               <!-- Dataset Link. -->
@@ -201,6 +201,36 @@
           </video>
       <h5 class="">
         <b>tl;dr</b> Given a set of unposed input images, <strong>SparseAGS</strong> jointly infers the corresponding camera poses and underlying 3D, allowing high-fidelity 3D inference in the wild.
+      </h5>
+
+      <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="static/images/demo.mp4"
+                    type="video/mp4">
+          </video>
+      <h5 class="">
+        Check out the demo on our <a href="https://github.com/QitaoZhao/SparseAGS#usage" target="_blank">GitHub Repo</a>! Here, we upload self-captured images and perform a single 3D reconstruction using our model (with DUSt3R poses as initialization).
+      </h5>
+
+      <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="static/images/demo2.mp4"
+                    type="video/mp4">
+          </video>
+      <h5 class="">
+        We present an example where the camera pose estimates from DUSt3R include an outlier, resulting in a poor-quality 3D reconstruction from a single run. By applying our full method to address the outlier, the quality of reconstructed 3D improves significantly.
       </h5>
     </div>
   </div>
@@ -302,7 +332,6 @@
     </div>
   </div> -->
 </section>
-
 
 <section class="section">
   <div class="container is-max-desktop">
