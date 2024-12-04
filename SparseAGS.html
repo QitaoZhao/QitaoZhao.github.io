@@ -37,7 +37,7 @@
         type: "carousel",
         perView: 2.68,
         focusAt: "center",
-        autoplay: 20000,
+        autoplay: 5000,
         hoverpause: true
       }).mount();
       new Glide("#static-carousel", {
@@ -202,36 +202,6 @@
       <h5 class="">
         <b>tl;dr</b> Given a set of unposed input images, <strong>SparseAGS</strong> jointly infers the corresponding camera poses and underlying 3D, allowing high-fidelity 3D inference in the wild.
       </h5>
-
-      <video class="rounded" id="replay-video"
-                 controls
-                 autoplay
-                 loop
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="static/images/demo.mp4"
-                    type="video/mp4">
-          </video>
-      <h5 class="">
-        Check out the demo on our <a href="https://github.com/QitaoZhao/SparseAGS#usage" target="_blank">GitHub Repo</a>! Here, we upload self-captured images and perform a single 3D reconstruction using our model (with DUSt3R poses as initialization).
-      </h5>
-
-      <video class="rounded" id="replay-video"
-                 controls
-                 autoplay
-                 loop
-                 muted
-                 preload
-                 playsinline
-                 width="100%">
-            <source src="static/images/demo2.mp4"
-                    type="video/mp4">
-          </video>
-      <h5 class="">
-        We present an example where the camera pose estimates from DUSt3R include an outlier, resulting in a poor-quality 3D reconstruction from a single run. By applying our full method to address the outlier, the quality of reconstructed 3D improves significantly.
-      </h5>
     </div>
   </div>
 </section>
@@ -243,32 +213,52 @@
         <ul class="glide__slides">
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser1.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_1.mp4" type="video/mp4" />
             </video>
           </li>
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser2.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_2.mp4" type="video/mp4" />
             </video>
           </li>
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser3.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_3.mp4" type="video/mp4" />
             </video>
           </li>
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser4.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_4.mp4" type="video/mp4" />
             </video>
           </li>
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser5.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_5.mp4" type="video/mp4" />
             </video>
           </li>
           <li class="glide__slide">
             <video controls muted loop autoplay>
-              <source src="static/images/teaser6.mp4" type="video/mp4" />
+              <source src="static/images/teaser_single_6.mp4" type="video/mp4" />
+            </video>
+          </li>
+          <li class="glide__slide">
+            <video controls muted loop autoplay>
+              <source src="static/images/teaser_single_7.mp4" type="video/mp4" />
+            </video>
+          </li>
+          <li class="glide__slide">
+            <video controls muted loop autoplay>
+              <source src="static/images/teaser_single_8.mp4" type="video/mp4" />
+            </video>
+          </li>
+          <li class="glide__slide">
+            <video controls muted loop autoplay>
+              <source src="static/images/teaser_single_9.mp4" type="video/mp4" />
+            </video>
+          </li>
+          <li class="glide__slide">
+            <video controls muted loop autoplay>
+              <source src="static/images/teaser_single_10.mp4" type="video/mp4" />
             </video>
           </li>
         </ul>
@@ -286,51 +276,12 @@
         <span class="glide__bullet" data-glide-dir="=3"></span>
         <span class="glide__bullet" data-glide-dir="=4"></span>
         <span class="glide__bullet" data-glide-dir="=5"></span>
+        <span class="glide__bullet" data-glide-dir="=6"></span>
+        <span class="glide__bullet" data-glide-dir="=7"></span>
+        <span class="glide__bullet" data-glide-dir="=8"></span>
+        <span class="glide__bullet" data-glide-dir="=9"></span>
       </div>
     </div>
-
-  <!-- <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-one">
-          <video poster="" id="one" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser1.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-        <div class="item item-two">
-          <video poster="" id="two" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser2.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-        <div class="item item-three">
-          <video poster="" id="three" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser3.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-        <div class="item item-four">
-          <video poster="" id="four" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser4.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-        <div class="item item-five">
-          <video poster="" id="five" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser5.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-        <div class="item item-six">
-          <video poster="" id="six" autoplay muted loop playsinline width="200%" height="100%">
-            <source src="static/images/teaser6.mp4"
-                    type="video/mp4" width="200%">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div> -->
 </section>
 
 <section class="section">
@@ -346,19 +297,6 @@
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/5077xFjWsIs"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
   </div>
 </section>
 
@@ -384,6 +322,35 @@
     </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Demo</h2>
+
+        <!-- Subsection. -->
+        <!-- <h3 class="title is-4">Comparison Against Existing Methods</h3> -->
+        <div class="content has-text-justified">
+          <p> Explore our <a href="https://github.com/QitaoZhao/SparseAGS#usage" target="_blank">GitHub Repository</a> to set up the demo on your machine! You can run our model in two ways: <ol> <li> <strong>Upload Images:</strong> Upload your own images and click <em>Preprocess Images</em> to initialize poses using DUSt3R. </li> <li> <strong>Use a Preprocessed Example:</strong> Select one of the preprocessed examples below to skip the preprocessing step. </li> </ol> </p> <p> Once the preprocessed images are displayed, click <em>Run Single 3D Reconstruction</em>. If the resulting 3D reconstruction appears inaccurate, use <em>Outlier Removal & Correction</em> to handle potential outlier camera pose(s) using our full method and improve the results. A video demonstration is provided below. </p>
+        </div>
+        <div class="content has-text-centered">
+          <video class="rounded" id="replay-video"
+                 controls
+                 autoplay
+                 loop
+                 muted
+                 preload
+                 playsinline
+                 width="100%">
+            <source src="static/images/demo2.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Subsection. -->
+      </div>
+    </div>
+</section>
 
 <section class="section">
   <div class="container is-max-desktop">
