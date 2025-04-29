@@ -9,9 +9,7 @@
   <title>DiffusionSfM: Predicting Structure and Motion via Ray Origin and Endpoint Diffusion</title>
 
 
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
@@ -21,6 +19,7 @@
   <link rel="stylesheet" href="./static/css/index.css">
   <link rel="icon" href="./static/images/favicon.svg">
 
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
@@ -34,7 +33,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-YXDZHQRVSJ');
 </script>
 
@@ -43,7 +41,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h2 class="title is-2 publication-title">DiffusionSfM: Predicting Structure and Motion via Ray Origin and Endpoint Diffusion</h2>
+          <h2 class="title is-2 publication-title">DiffusionSfM: Predicting Structure and Motion<br>via Ray Origin and Endpoint Diffusion</h2>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://qitaozhao.github.io/" target="_blank">Qitao Zhao</a>,</span>
@@ -59,47 +57,27 @@
               <a href="https://shubhtuls.github.io/" target="_blank">Shubham Tulsiani</a></span>
           </div>
 
-          <!-- <div class="is-size-5 publication-authors">
+          <div class="is-size-5 publication-authors">
             <span class="author-block">Carnegie Mellon University</span>
-          </div> -->
+          </div>
 
-          <!-- <div class="is-size-5 publication-authors">
-            <span class="author-block">Submitted to CVPR 2025</span>
-          </div> -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">CVPR 2025</span>
+          </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="research/DiffusionSfM/DiffusionSfM.pdf"
+                <a href=""
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                   </span>
-                  <span>Paper</span>
+                  <span>Paper (Coming Soon)</span>
                 </a>
               </span>
-              <!-- <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv (coming soon)</span>
-                </a>
-              </span> -->
-              <!-- Video Link. -->
-              <!-- <span class="link-block">
-                <a href="#"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span> -->
-              <!-- Code Link. -->
-              <!-- <span class="link-block">
+              <span class="link-block">
                 <a href="https://qitaozhao.github.io/"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
@@ -107,32 +85,8 @@
                   </span>
                   <span>Code (Coming Soon)</span>
                   </a>
-              </span> -->
-              <!-- Dataset Link. -->
-              <!-- <span class="link-block">
-                <a href="https://github.com/google/nerfies/releases/tag/0.1"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="far fa-images"></i>
-                  </span>
-                  <span>Data</span>
-                  </a> -->
-              <!-- <span class="link-block">
-                <a href="diverse.html"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span>Random Results</span>
-                  </a>
-              </span> -->
-
-              <!-- <span class="link-block">
-                <a href="comparison.html"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span>Random Comparisons</span>
-                  </a>
-              </span> -->
-
+              </span>
             </div>
-
           </div>
         </div>
       </div>
@@ -143,59 +97,59 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="./research/DiffusionSfM/figures/teaser_new.png" alt="Teaser figure."/>
+      <img src="./research/DiffusionSfM/figures/teaser.png" alt="Teaser figure."/>
       <h5 class="">
-        Given a set of multi-view images as input, <strong>DiffusionSfM</strong> parametrizes scene geometry and cameras as pixel-wise ray origins and endpoints in a global frame and learns a denoising diffusion model to infer these from multi-view input. In contrast to current Structure-from-Motion pipelines, which often adopt a two-stage approach of pairwise reasoning followed by global optimization, our method unifies both stages into a single end-to-end multi-view reasoning step.
+        <strong>Top:</strong> Given a set of multi-view images (left), DiffusionSfM represents scene geometry and cameras (right) as pixel-wise ray origins and endpoints in a global frame. It learns a denoising diffusion model to infer these elements directly from multi-view inputs. Unlike traditional Structure-from-Motion (SfM) pipelines, which separate pairwise reasoning and global optimization into two stages, our approach unifies both into a single end-to-end multi-view reasoning framework. <strong>Bottom:</strong> Example results of inferred scene geometry and cameras for two distinct settings: a real-world outdoor scene (left) and a synthetic indoor scene (right).
       </h5>
     </div>
   </div>
 </section>
 
 
-<!-- <section class="hero is-light is-small">
+<section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-one">
           <video poster="" id="one" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser1.mp4"
+            <source src="./research/DiffusionSfM/videos/backpack_108_12850_22707_N5.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-two">
           <video poster="" id="two" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser2.mp4"
+            <source src="./research/DiffusionSfM/videos/habitat_hm3d_train_00512-WZDzPCybQvS_WZDzPCybQvS.basis_N5_4.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-three">
           <video poster="" id="three" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser3.mp4"
+            <source src="./research/DiffusionSfM/videos/habitat_gibson_Elmira_N5_2.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-four">
           <video poster="" id="four" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser4.mp4"
+            <source src="./research/DiffusionSfM/videos/teddybear_159_17485_33236_N5.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-five">
           <video poster="" id="five" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser5.mp4"
+            <source src="./research/DiffusionSfM/videos/umbrella_265_28226_53763_N3.mp4"
                     type="video/mp4">
           </video>
         </div>
         <div class="item item-six">
           <video poster="" id="six" autoplay muted loop playsinline height="100%">
-            <source src="static/images/teaser6.mp4"
+            <source src="./research/DiffusionSfM/videos/bench_250_26758_54244_N5.mp4"
                     type="video/mp4">
           </video>
         </div>
       </div>
     </div>
   </div>
-</section> -->
+</section>
 
 
 <section class="section">
@@ -206,45 +160,28 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Current Structure-from-Motion (SfM) methods often adopt a two-stage pipeline involving learned or geometric pairwise reasoning followed by a global optimization. We instead propose a data-driven multi-view reasoning approach that directly infers cameras and 3D geometry from multi-view images. Our proposed framework, <em>DiffusionSfM</em>, parametrizes scene geometry and cameras as pixel-wise ray origins and endpoints in a global frame, and learns a transformer-based denoising diffusion model to predict these from multi-view input. We develop mechanisms to overcome practical challenges in training diffusion models with missing data and unbounded scene coordinates, and demonstrate that DiffusionSfM allows accurate prediction of 3D and cameras. We empirically validate our approach on challenging real world data and find that DiffusionSfM improves over prior classical and learning-based methods, while also naturally modeling uncertainty and allowing external guidance to be incorporated in inference. 
+            Current Structure-from-Motion (SfM) methods typically follow a two-stage pipeline, combining learned or geometric pairwise reasoning with a subsequent global optimization step. In contrast, we propose a data-driven multi-view reasoning approach that directly infers 3D scene geometry and camera poses from multi-view images. Our framework, DiffusionSfM, parameterizes scene geometry and cameras as pixel-wise ray origins and endpoints in a global frame and employs a transformer-based denoising diffusion model to predict them from multi-view inputs. To address practical challenges in training diffusion models with missing data and unbounded scene coordinates, we introduce specialized mechanisms that ensure robust learning. We empirically validate DiffusionSfM on both synthetic and real datasets, demonstrating that it outperforms classical and learning-based approaches while naturally modeling uncertainty.
           </p>
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <!-- <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/5077xFjWsIs"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div> -->
-    <!--/ Paper video. -->
   </div>
 </section>
 
+
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Method</h2>
-
-        <!-- Subsection. -->
-        <!-- <h3 class="title is-4">Comparison Against Existing Methods</h3> -->
         <div class="content has-text-justified">
           <p>
-            Given sparse multi-view images as input, DiffusionSfM predicts pixel-wise ray origins and endpoints for each image in a global frame using a denoising diffusion process. During training, it is conditioned on a depth mask to handle missing or invalid ground truth depth common in real-world datasets, e.g., CO3D. At inference, the depth mask is set to all ones, enabling the model to predict origins and endpoints for all pixels.
+            Given sparse multi-view images as input, DiffusionSfM predicts pixel-wise ray origins and endpoints in a global frame using a denoising diffusion process. For each image, we compute patch-wise embeddings with DINOv2 and embed noisy ray origins and endpoints into latents using a single downsampling convolutional layer, ensuring alignment with the spatial footprint of the image embeddings. We implement a Diffusion Transformer architecture that predicts clean ray origins and endpoints from noisy samples. A convolutional DPT head outputs full-resolution denoised ray origins and endpoints. To handle incomplete ground truth (GT) during training, we condition the model on a GT mask. At inference, the GT mask is set to all ones, enabling the model to predict origins and endpoints for all pixels. The predicted ray origins and endpoints can be directly visualized in 3D or post-processed to recover camera extrinsics, intrinsics, and multi-view consistent depth maps.
           </p>
         </div>
         <div class="content has-text-centered">
           <img src="./research/DiffusionSfM/figures/framework.png" alt="Method figure."/>
         </div>
-        <!--/ Subsection. -->
       </div>
     </div>
 </section>
@@ -252,44 +189,170 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <!-- <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Left</h2>
+      <div class="column is-full-width">
+        <h2 class="title is-3">Interactive 3D Models</h2>
+        <!-- <div class="content has-text-justified">
           <p>
-            p
+            Given sparse multi-view images as input, DiffusionSfM predicts pixel-wise ray origins and endpoints in a global frame using a denoising diffusion process. For each image, we compute patch-wise embeddings with DINOv2 and embed noisy ray origins and endpoints into latents using a single downsampling convolutional layer, ensuring alignment with the spatial footprint of the image embeddings. We implement a Diffusion Transformer architecture that predicts clean ray origins and endpoints from noisy samples. A convolutional DPT head outputs full-resolution denoised ray origins and endpoints. To handle incomplete ground truth (GT) during training, we condition the model on a GT mask. At inference, the GT mask is set to all ones, enabling the model to predict origins and endpoints for all pixels. The predicted ray origins and endpoints can be directly visualized in 3D or post-processed to recover camera extrinsics, intrinsics, and multi-view consistent depth maps.
           </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="#"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div> -->
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <!-- <div class="column">
-        <h2 class="title is-3">Right</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              p
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src=""
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
+        </div> -->
       </div>
-    </div> -->
-    <!--/ Matting. -->
+    </div>
+</section>
+
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+        <div class="model-viewer-container">
+          <model-viewer id="QualitativeResult"
+                        src="./research/DiffusionSfM/3D/habitat_gibson_Divide_N3.glb"
+                        alt="3D Model"
+                        loading="eager"
+                        touch-action="pan-y" environment-image="legacy"
+                        camera-orbit="180deg 70deg auto" 
+                        zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
+                        max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
+                        disable-shadow ar-modes="webxr scene-viewer quick-look"
+                        style="width: 90%; height: 90%; background: #ffffff; margin: 0 auto;">
+          </model-viewer>
+        </div>
+        <br>
+        <!-- <div class="content has-text-centered">
+         -->
+        <div class="content has-text-justified">
+          <div class="thumbnail-container" id="thumbnail-qualitative">
+            <!-- <img src="resources/qualitative/college.png" data-glb="resources/qualitative/college_v2.glb"> -->
+            <!-- <video src="resources/qualitative/pyramid.mp4" data-glb="resources/qualitative/pyramid.glb" loop playsinline muted></video> -->
+            <img src="./research/DiffusionSfM/3D/habitat_gibson_Divide_N3.png" data-glb="./research/DiffusionSfM/3D/habitat_gibson_Divide_N3.glb">
+            <img src="./research/DiffusionSfM/3D/hydrant_206_21797_45640_N3.png" data-glb="./research/DiffusionSfM/3D/hydrant_206_21797_45640_N3.glb">
+            <img src="./research/DiffusionSfM/3D/habitat_gibson_Chrisney_N5.png" data-glb="./research/DiffusionSfM/3D/habitat_gibson_Chrisney_N5.glb">
+            <img src="./research/DiffusionSfM/3D/donut_366_39342_76295_N5.png" data-glb="./research/DiffusionSfM/3D/donut_366_39342_76295_N5.glb">
+            <img src="./research/DiffusionSfM/3D/habitat_gibson_Eudora_N5.png" data-glb="./research/DiffusionSfM/3D/habitat_gibson_Eudora_N5.glb">
+            <img src="./research/DiffusionSfM/3D/habitat_gibson_Kildare_N5.png" data-glb="./research/DiffusionSfM/3D/habitat_gibson_Kildare_N5.glb">
+            <img src="./research/DiffusionSfM/3D/habitat_gibson_Lajas_N5.png" data-glb="./research/DiffusionSfM/3D/habitat_gibson_Lajas_N5.glb"> 
+          </div>  
+        </div>  
+        <style>
+          .thumbnail-container img, .thumbnail-container video {
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+            cursor: pointer;
+          }
+          .thumbnail-selected {
+            transform: scale(1.2);
+            border: 6px solid #79b4f2 !important; 
+            box-shadow: 0 0 10px rgba(121, 180, 242, 0.5);
+            z-index: 10;
+            position: relative;
+          }
+          
+          /* New styles for responsive horizontal gallery */
+          .thumbnail-container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 10px;
+            padding: 10px 0;
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+            scrollbar-width: thin;
+            align-items: center;
+          }
+          
+          .thumbnail-container img, 
+          .thumbnail-container video {
+            flex: 0 0 auto;
+            height: auto;
+            width: 160px; /* Consistent width */
+            object-fit: cover;
+            max-width: none;
+          }
+          
+          /* Custom scrollbar styling */
+          .thumbnail-container::-webkit-scrollbar {
+            height: 6px;
+          }
+          
+          .thumbnail-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+          }
+          
+          .thumbnail-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+          }
+          
+          .thumbnail-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+          
+          /* Adjust for smaller screens */
+          @media (max-width: 768px) {
+            .thumbnail-container img,
+            .thumbnail-container video {
+              height: 100px;
+            }
+          }
+        </style>
+        <script>
+          // The problem is here - you're trying to select an element that doesn't exist
+          // document.querySelector('#thumbnail-qualitative img[src="resources/qualitative/college.png"]').classList.add('thumbnail-selected');
+          
+          // Instead, select the first element that actually exists in your thumbnail container
+          document.addEventListener('DOMContentLoaded', function() {
+            // Select the first element in the thumbnail container (video or image)
+            const firstThumbnail = document.querySelector('#thumbnail-qualitative video, #thumbnail-qualitative img');
+            if (firstThumbnail) {
+              firstThumbnail.classList.add('thumbnail-selected');
+              // If it's a video, play it
+              if (firstThumbnail.tagName.toLowerCase() === 'video') {
+                firstThumbnail.play();
+              }
+            }
+            
+            document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(el => {
+              // Rest of your click handler code remains the same
+              el.addEventListener('click', () => {
+                const glbSrc = el.getAttribute('data-glb');
+                const modelViewer = document.getElementById('QualitativeResult');
+                modelViewer.setAttribute('src', glbSrc);
+                modelViewer.cameraOrbit = "180deg 70deg auto";
+                modelViewer.resetTurntableRotation(0);
+                modelViewer.jumpCameraToGoal();
+
+                // Remove selection class from all elements
+                document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(element => {
+                    element.classList.remove('thumbnail-selected');
+                });
+                
+                // Add selection class to clicked element
+                el.classList.add('thumbnail-selected');
+                
+                // Play video if it's a video element
+                if (el.tagName.toLowerCase() === 'video') {
+                    el.play();
+                }
+                
+                // Pause all other videos
+                document.querySelectorAll('#thumbnail-qualitative video').forEach(video => {
+                    if (video !== el) {
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                });
+              });
+            });
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</section>
 
 
+<section class="section">
+  <div class="container is-max-desktop">
     <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -371,8 +434,6 @@
         </div>
         <!--/ Subsection. -->
         </div>
-
-      </div>
     </div>
     <!--/ Animation. -->
 
