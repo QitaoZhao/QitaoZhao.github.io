@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <!-- <link rel="stylesheet" href="./static/css/fontawesome.all.min.css"> -->
   <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
@@ -21,7 +21,7 @@
 
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <!-- <script defer src="./static/js/fontawesome.all.min.js"></script> -->
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
@@ -189,37 +189,28 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <h2 class="title is-3">Interactive 3D Models</h2>
     <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Interactive 3D Models</h2>
-        <!-- <div class="content has-text-justified">
-          <p>
-            Given sparse multi-view images as input, DiffusionSfM predicts pixel-wise ray origins and endpoints in a global frame using a denoising diffusion process. For each image, we compute patch-wise embeddings with DINOv2 and embed noisy ray origins and endpoints into latents using a single downsampling convolutional layer, ensuring alignment with the spatial footprint of the image embeddings. We implement a Diffusion Transformer architecture that predicts clean ray origins and endpoints from noisy samples. A convolutional DPT head outputs full-resolution denoised ray origins and endpoints. To handle incomplete ground truth (GT) during training, we condition the model on a GT mask. At inference, the GT mask is set to all ones, enabling the model to predict origins and endpoints for all pixels. The predicted ray origins and endpoints can be directly visualized in 3D or post-processed to recover camera extrinsics, intrinsics, and multi-view consistent depth maps.
-          </p>
-        </div> -->
-      </div>
-    </div>
-</section>
-
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width has-text-centered">
-        <div class="model-viewer-container">
-          <model-viewer id="QualitativeResult"
-                        src="./research/DiffusionSfM/3D/habitat_gibson_Divide_N3.glb"
-                        alt="3D Model"
-                        loading="eager"
-                        touch-action="pan-y" environment-image="legacy"
-                        camera-orbit="180deg 70deg auto" 
-                        zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
-                        max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
-                        disable-shadow ar-modes="webxr scene-viewer quick-look"
-                        style="width: 90%; height: 90%; background: #ffffff; margin: 0 auto;">
-          </model-viewer>
+      <div class="content has-text-justified">
+          <div style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 500px;
+          width: 100%;
+          background: #ffffff;">
+            <model-viewer id="QualitativeResult"
+                          src="./research/DiffusionSfM/3D/habitat_gibson_Divide_N3.glb"
+                          alt="3D Model"
+                          loading="eager"
+                          touch-action="pan-y"
+                          environment-image="legacy"
+                          camera-orbit="180deg 70deg auto"
+                          zoom-sensitivity="0.2"
+                          camera-controls
+                          style="width: 90%; height: 90%; background: #887c7c;">
+            </model-viewer>
         </div>
-        <br>
-        <!-- <div class="content has-text-centered">
-         -->
         <div class="content has-text-justified">
           <div class="thumbnail-container" id="thumbnail-qualitative">
             <!-- <img src="resources/qualitative/college.png" data-glb="resources/qualitative/college_v2.glb"> -->
