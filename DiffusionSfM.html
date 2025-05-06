@@ -336,7 +336,6 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <!-- Animation. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Results</h2>
@@ -349,103 +348,94 @@
           </p>
         </div>
         <div class="content has-text-centered">
-          <img src="./research/DiffusionSfM/figures/pose_acc.png" alt="SPARF Comparison figure."/>
+          <img src="./research/DiffusionSfM/figures/pose_acc.png" alt="SPARF Comparison figure." width="75%"/>
         </div>
         <!--/ Subsection. -->
 
         <!-- Subsection. -->
-        <h3 class="title is-4">Quantitative Comparison of Predicted Geometry and Focal Length on CO3D Unseen Categories</h3>
+        <h3 class="title is-4">Quantitative Comparison of Predicted Geometry on CO3D Unseen Categories</h3>
         <div class="content has-text-justified">
           <p>
-            Top: Chamfer Distance (CD) computed over all scene points. Middle: CD computed on foreground points only. Bottom: Percentage of predicted focal lengths within 15% of the ground truth. RD+MoGe refers to the Ray Diffusion camera pose, with depth estimates from MoGe aligned to the ground truth. DUSt3R-CO3D is trained solely on CO3D, while DUSt3R-all is trained on multiple datasets. DiffusionSfM outperforms all methods in terms of full scene geometry and estimated focal length, and also outperforms both RD+MoGe and DUSt3R-CO3D on foreground geometry.
+            Top: CD computed on all scene points. Bottom: CD computed on foreground points only. Models marked with "*" are trained on CO3D only, while those without are trained on multiple datasets. Note that top and bottom values are not directly comparable, as each ground-truth point cloud is individually normalized.
           </p>
         </div>
         <div class="content has-text-centered">
-            <div class="content has-text-centered">
-          <img src="./research/DiffusionSfM/figures/geometry_acc.png" alt="LEAP Comparison figure." width="75%"/>
+            <img src="./research/DiffusionSfM/figures/geometry_acc.png" alt="LEAP Comparison figure." width="75%"/>
         </div>
-          <!-- <video class="rounded" id="replay-video"
-                 controls
-                 autoplay
-                 loop
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="static/images/comp_v10_core.mp4"
-                    type="video/mp4">
-          </video> -->
+
+        <!-- Subsection. -->
+        <h3 class="title is-4">Quantitative Comparison of Camera Pose Accuracy on Two Scene-Level Datasets</h3>
+        <div class="content has-text-justified">
+          <p>
+            Top: Habitat (2–5 views). Bottom: RealEstate10k (2, 4, 6, 8 views). Each grid reports camera rotation accuracy (left) and center accuracy (right). While DiffusionSfM performs on par with DUSt3R in rotation accuracy, it consistently surpasses DUSt3R in center accuracy.
+          </p>
         </div>
-        <!--/ Subsection. -->
+        <div class="content has-text-centered">
+          <img src="./research/DiffusionSfM/figures/pose_acc_scene.png" alt="LEAP Comparison figure." width="75%"/>
+        </div>
 
         <!-- Subsection. -->
         <h3 class="title is-4">Qualitative Comparison of Predicted Geometry and Camera Poses</h3>
         <div class="content has-text-justified">
           <p>
-            DiffusionSfM shows superior capabilities in handling challenging samples, e.g., the skateboard and tennis ball. Additionally, while we observe that DUSt3R-all can predict highly precise camera rotations, it often struggles with camera centers (see the keyboard and backpack examples).
+            DiffusionSfM demonstrates robust performance even with challenging inputs. Compared to DUSt3R, which sometimes fails to register images in a consistent manner, DiffusionSfM consistently yields a coherent global prediction. Additionally, while we observe that DUSt3R can predict highly precise camera rotations, it often struggles with camera centers (see the backpack example). Input images depicting scenes are out-of-distribution for RayDiffusion, as it is trained on CO3D only.
           </p>
         </div>
         <div class="content has-text-centered">
-            <div class="content has-text-centered">
-          <img src="./research/DiffusionSfM/figures/supp_vis_compare_new.png" alt="LEAP Comparison figure." width="100%"/>
-        </div></div>
-        <!--/ Subsection. -->
+            <img src="./research/DiffusionSfM/figures/vis_compare.png" alt="LEAP Comparison figure." width="100%"/>
+        </div>
 
         <!-- Subsection. -->
         <div class="content has-text-centered">
-            <div class="content has-text-centered">
-          <img src="./research/DiffusionSfM/figures/supp_vis_cameras.png" alt="LEAP Comparison figure." width="90%"/>
+            <img src="./research/DiffusionSfM/figures/vis_cameras.png" alt="LEAP Comparison figure." width="100%"/>
         </div>
       </div>
     </div>
   </div>
-    <!--/ Animation. -->
-
-
-    <!-- Concurrent Work. -->
-    <!-- <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-        </div>
-      </div>
-    </div>
-    </div> -->
-
 </section>
 
 
-
-
-<!-- <section class="section" id="Acknowledgements">
+<section class="section">
   <div class="container is-max-desktop content">
-    <h3 class="title">Related Links</h2>
-    <p>Our 3D reconstruction pipeline is built on top of <a href="https://arxiv.org/pdf/2309.16653" target="_blank">DreamGaussian</a> and <a href="https://github.com/ashawkey/stable-dreamfusion" target="_blank">Stable-DreamFusion</a>. Additionally, we fine-tuned and utilized the novel-view generative priors from <a href="https://arxiv.org/pdf/2303.11328" target="_blank">Zero123</a>. We sincerely appreciate the authors' efforts in open-sourcing their code. </p>
-</section> -->
-
-<!-- <section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h3 class="title">BibTeX</h3>
-    <pre>
-<code>@inproceedings{zhao2024sparseags,
-  title={Sparse-view Pose Estimation and Reconstruction via Analysis by Generative Synthesis}, 
-  author={Qitao Zhao and Shubham Tulsiani},
-  booktitle={NeurIPS},
-  year={2024}
-}</code></pre>
-  </div>
-</section> -->
-
-<!-- <section class="column" id="Acknowledgements">
-  <div class="container is-max-desktop content">
-    <h3 class="title">Acknowledgements</h2>
-    <p>We thank Zihan Wang and the members of the Physical Perception Lab at CMU for their valuable discussions. We especially appreciate Amy Lin and Zhizhuo (Z) Zhou for their assistance in creating figures, as well as Yanbo Xu and Jason Zhang for their feedback on the draft. We also thank Hanwen Jiang for his support in setting up the LEAP baseline for comparison.</p>
-
-    <p>This work was supported in part by NSF Award IIS-2345610. This work used Bridges-2 at Pittsburgh Supercomputing Center through allocation CIS240166 from the Advanced Cyberinfrastructure Coordination Ecosystem: Services & Support (ACCESS) program, which is supported by National Science Foundation grants #2138259, #2138286, #2138307, #2137603, and #2138296.
+    <h2 class="title is-3">Discussion</h2>
+    <p>
+      We present DiffusionSfM and demonstrate that it recovers accurate predictions of both cameras and geometry from multi-view inputs. Although our results are promising, several challenges and open questions remain. 
+    </p>
+    <p>
+      Notably, DiffusionSfM employs a pixel-space diffusion model, in contrast to the latent-space models adopted by state-of-the-art T2I generative systems. Operating in pixel space may require greater model capacity, yet our current model remains relatively small -- potentially explaining the noisy patterns observed along object boundaries. Learning an expressive latent space for ray origins and endpoints by training a VAE could be a promising direction for future work. In addition, the computational requirement in multi-view transformers scales quadratically with the number of input images: one would require masked attention to deploy systems like ours for a large set of input images. 
+    </p>
+    <p>
+      Despite these challenges, we believe that our work highlights the potential of a unified approach for multi-view geometry tasks. We envision that our approach can be built upon to train a common system across related geometric tasks, such as SfM (input images with unknown origins and endpoints), registration (some images have known origins and endpoints, whereas others don't), mapping (known rays but unknown endpoints), and view synthesis (unknown pixel values for known rays). </p>
     </p>
   </div>
-</section> -->
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+<pre><code>@inproceedings{zhao2025diffusionsfm,
+  title={DiffusionSfM: Predicting Structure and Motion via Ray Origin and Endpoint Diffusion}, 
+  author={Qitao Zhao and Amy Lin and Jeff Tan and Jason Y. Zhang and Deva Ramanan and Shubham Tulsiani},
+  booktitle={CVPR},
+  year={2025} 
+}</code></pre>
+  </div>
+</section>
+
+
+<section class="column" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Acknowledgements</h2>
+    <p>
+      We thank the members of the Physical Perception Lab at CMU for their valuable discussions, and extend special thanks to Yanbo Xu for his insights on diffusion models.
+    </p>
+    <p>
+      This work used Bridges-2 at Pittsburgh Supercomputing Center through allocation CIS240166 from the Advanced Cyberinfrastructure Coordination Ecosystem: Services \& Support (ACCESS) program, which is supported by National Science Foundation grants \#2138259, \#2138286, \#2138307, \#2137603, and \#2138296. This work was supported by Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior/Interior Business Center (DOI/IBC) contract number 140D0423C0074. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA, DOI/IBC, or the U.S. Government.
+    </p>
+  </div>
+</section>
+
 
 <footer class="footer">
   <div class="container">
@@ -462,7 +452,7 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is made from this template <a href="https://github.com/nerfies/nerfies.github.io">source code</a>.
+            This website is built using this template (<a href="https://github.com/nerfies/nerfies.github.io">source code</a>). The 3D model visualization is adapted from <a href="https://vgg-t.github.io/">VGGT</a>.
           </p>
         </div>
       </div>
