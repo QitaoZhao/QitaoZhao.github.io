@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="E-RayZer: Self-supervised 3D Reconstruction as Spatial Visual Pre-training">
+  <meta name="keywords" content="self-supervised 3D reconstruction, spatial visual pre-training, multi-view geometry">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>E-RayZer: Self-supervised 3D Reconstruction as Spatial Visual Pre-training</title>
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+  <link rel="stylesheet" href="./research/E-RayZer/static/css/bulma.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/glide.core.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/glide.theme.min.css">
+  <link rel="stylesheet" href="./research/E-RayZer/glide-custom.css">
+  <link rel="stylesheet" href="./research/E-RayZer/static/css/index.css">
+  <link rel="icon" href="./research/E-RayZer/images/favicon.svg">
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./research/E-RayZer/static/js/fontawesome.all.min.js"></script>
+  <script src="./research/E-RayZer/static/js/bulma-carousel.min.js"></script>
+  <script src="./research/E-RayZer/static/js/bulma-slider.min.js"></script>
+  <script src="./research/E-RayZer/glide.min.js"></script>
+  <script src="./research/E-RayZer/static/js/index.js"></script>
+</head>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h2 class="title is-2 publication-title">E-RayZer: Self-supervised 3D Reconstruction<br>as Spatial Visual Pre-training</h2>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><a href="https://qitaozhao.github.io/" target="_blank" rel="noreferrer">Qitao Zhao</a><sup>1</sup></span>
+            <span class="author-block"><a href="https://www.cs.unc.edu/~airsplay/" target="_blank" rel="noreferrer">Hao Tan</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://qianqianwang68.github.io/" target="_blank" rel="noreferrer">Qianqian Wang</a><sup>3</sup></span>
+            <span class="author-block"><a href="https://sai-bi.github.io/" target="_blank" rel="noreferrer">Sai Bi</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://kai-46.github.io/website/" target="_blank" rel="noreferrer">Kai Zhang</a><sup>2</sup></span>
+          </div>
+          <div class="is-size-4 publication-authors">
+            <span class="author-block"><a href="http://www.kalyans.org/" target="_blank" rel="noreferrer">Kalyan Sunkavalli</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://shubhtuls.github.io/" target="_blank" rel="noreferrer">Shubham Tulsiani</a><sup>1*</sup></span>
+            <span class="author-block"><a href="https://hwjiang1510.github.io/" target="_blank" rel="noreferrer">Hanwen Jiang</a><sup>2*</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup> Carnegie Mellon University</span>
+            <span class="author-block"><sup>2</sup> Adobe Research</span>
+            <span class="author-block"><sup>3</sup> Harvard University</span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">* denotes equal advising</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/TBD"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/placeholder/E-RayZer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/placeholder/E-RayZer"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    🤗
+                  </span>
+                  <span>Demo</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img src="./research/E-RayZer/images/erayzer_teaser.png" alt="Teaser figure."/>
+      <h5 class="">
+        <strong>tl;dr</strong> We propose <strong>E-RayZer</strong>, a <strong>self-supervised</strong> 3D Vision model predicting camera poses and scene geometry as 3D Gaussians. The use of <strong>explicit</strong> 3D geometry yields more geometrically grounded poses compared to its implicit counterpart, RayZer: They are comparable to and sometimes even better than those from supervised state-of-the-art model VGGT. Furthermore, E-RayZer also serves as a self-supervised <strong>visual pre-training</strong> framework, with learned representations that transfer effectively to downstream tasks requiring 3D understanding.
+      </h5>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Self-supervised pre-training has revolutionized foundation models for language, 2D images and videos, but remains largely unexplored for learning 3D-aware representations from multi-view images. In this paper, we present E-RayZer, a self-supervised large 3D Vision model that learns truly 3D-aware representations directly from unlabeled images. Unlike prior self-supervised methods such as RayZer that infer 3D indirectly through latent-space view synthesis, <strong>E</strong>-RayZer operates directly in 3D space, performing self-supervised 3D reconstruction with <strong>Explicit</strong> geometry. This formulation eliminates shortcut solutions and yields representations that are geometrically grounded. To ensure convergence and scalability, we introduce a novel fine-grained learning curriculum that organizes training from easy to hard samples and harmonizes heterogeneous data sources in an entirely unsupervised manner. Experiments demonstrate that E-RayZer significantly outperforms RayZer on pose estimation, matches or sometimes surpasses fully supervised reconstruction models such as VGGT. Furthermore, its learned representations outperform leading visual pre-training models (e.g., DINOv2, CroCo v2, VideoMAE V2, and RayZer) when transferring to 3D downstream tasks, establishing E-RayZer as a new paradigm for 3D-aware visual pre-training.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Method</h2>
+        <div class="content has-text-justified">
+          <p>
+            <strong>E-RayZer Model & Training.</strong> E-RayZer first predicts camera poses and intrinsics for all images. Then it follows RayZer to split images into two sets. E-RayZer predicts explicit 3D Gaussians as scene representation from the reference views, and renders the scene using self-predicted target-view cameras. Finally, E-RayZer is trained with self-supervised photometric losses on target views.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/E-RayZer/images/erayzer_model.png" alt="Method figure."/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container is-max-desktop">
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Interactive 3D Models</h2>
+      <div class="content has-text-justified">
+        <p>
+          Here we visualize the predicted 3D Gaussians as point clouds across diverse 3D scenes, using pixel RGB values as colors and the Gaussian means as point locations. We observe that the 3D Gaussians learned by E-RayZer are highly accurate, despite being trained in a fully self-supervised manner and without any pretrained priors. The point clouds are not post-processed and are rendered directly from the predicted Gaussian parameters.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="column is-full-width">
+  <div style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+    background: #ffffff;">
+    <model-viewer id="QualitativeResult"
+                  src="./research/E-RayZer/3D/dl3dv_000019.glb"
+                  alt="3D Model"
+                  loading="eager"
+                  touch-action="pan-y"
+                  environment-image="legacy"
+                  camera-orbit="180deg 70deg auto"
+                  zoom-sensitivity="0.2"
+                  camera-controls
+                  style="width: 60%; height: 90%; background: #887c7c;">
+    </model-viewer>
+  </div>
+  <div class="columns is-centered">
+    <div class="thumbnail-container" id="thumbnail-qualitative">
+      <img src="./research/E-RayZer/3D/dl3dv_000019.png" data-glb="./research/E-RayZer/3D/dl3dv_000019.glb">
+      <img src="./research/E-RayZer/3D/dl3dv_000004.png" data-glb="./research/E-RayZer/3D/dl3dv_000004.glb">
+      <img src="./research/E-RayZer/3D/dl3dv_000007.png" data-glb="./research/E-RayZer/3D/dl3dv_000007.glb">
+      <img src="./research/E-RayZer/3D/dl3dv_000017.png" data-glb="./research/E-RayZer/3D/dl3dv_000017.glb">
+      <img src="./research/E-RayZer/3D/dl3dv_000041.png" data-glb="./research/E-RayZer/3D/dl3dv_000041.glb">
+      <img src="./research/E-RayZer/3D/wildrgbd_000002.png" data-glb="./research/E-RayZer/3D/wildrgbd_000002.glb">
+      <img src="./research/E-RayZer/3D/wildrgbd_000018.png" data-glb="./research/E-RayZer/3D/wildrgbd_000018.glb">
+      <img src="./research/E-RayZer/3D/blendedmvs_000107.png" data-glb="./research/E-RayZer/3D/blendedmvs_000107.glb">
+    </div>
+  </div>
+  <style>
+    .thumbnail-container img, .thumbnail-container video {
+      transition: all 0.3s ease;
+      border: 3px solid transparent;
+      cursor: pointer;
+    }
+    .thumbnail-selected {
+      transform: scale(1.2);
+      border: 6px solid #79b4f2 !important; 
+      box-shadow: 0 0 10px rgba(121, 180, 242, 0.5);
+      z-index: 10;
+      position: relative;
+    }
+    
+    /* New styles for responsive horizontal gallery */
+    .thumbnail-container {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px 0;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      scrollbar-width: thin;
+      align-items: center;
+    }
+    
+    .thumbnail-container img, 
+    .thumbnail-container video {
+      flex: 0 0 auto;
+      height: auto;
+      width: 200px; /* Consistent width */
+      object-fit: cover;
+      max-width: none;
+    }
+    
+    /* Custom scrollbar styling */
+    .thumbnail-container::-webkit-scrollbar {
+      height: 6px;
+    }
+    
+    .thumbnail-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    
+    .thumbnail-container::-webkit-scrollbar-thumb {
+      background: #888;
+      border-radius: 10px;
+    }
+    
+    .thumbnail-container::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+    
+    /* Adjust for smaller screens */
+    @media (max-width: 768px) {
+      .thumbnail-container img,
+      .thumbnail-container video {
+        height: 100px;
+      }
+    }
+  </style>
+  <script>
+    // The problem is here - you're trying to select an element that doesn't exist
+    // document.querySelector('#thumbnail-qualitative img[src="research/qualitative/college.png"]').classList.add('thumbnail-selected');
+    
+    // Instead, select the first element that actually exists in your thumbnail container
+    document.addEventListener('DOMContentLoaded', function() {
+      // Select the first element in the thumbnail container (video or image)
+      const firstThumbnail = document.querySelector('#thumbnail-qualitative video, #thumbnail-qualitative img');
+      if (firstThumbnail) {
+        firstThumbnail.classList.add('thumbnail-selected');
+        // If it's a video, play it
+        if (firstThumbnail.tagName.toLowerCase() === 'video') {
+          firstThumbnail.play();
+        }
+      }
+      
+      document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(el => {
+        // Rest of your click handler code remains the same
+        el.addEventListener('click', () => {
+          const glbSrc = el.getAttribute('data-glb');
+          const modelViewer = document.getElementById('QualitativeResult');
+          modelViewer.setAttribute('src', glbSrc);
+          modelViewer.cameraOrbit = "180deg 70deg auto";
+          modelViewer.resetTurntableRotation(0);
+          modelViewer.jumpCameraToGoal();
+
+          // Remove selection class from all elements
+          document.querySelectorAll('#thumbnail-qualitative img, #thumbnail-qualitative video').forEach(element => {
+              element.classList.remove('thumbnail-selected');
+          });
+          
+          // Add selection class to clicked element
+          el.classList.add('thumbnail-selected');
+          
+          // Play video if it's a video element
+          if (el.tagName.toLowerCase() === 'video') {
+              el.play();
+          }
+          
+          // Pause all other videos
+          document.querySelectorAll('#thumbnail-qualitative video').forEach(video => {
+              if (video !== el) {
+                  video.pause();
+                  video.currentTime = 0;
+              }
+          });
+        });
+      });
+    });
+  </script>
+</div>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Qualitative Comparisons on NVS and Pose estimation</h2>
+
+        <!-- Subsection. -->
+        <!-- <h3 class="title is-4">Quantitative Comparisons of Novel-view Synthesis and Pose estimation</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            We show results for both novel-view synthesis (left) and pose estimation (right). The temporal order of the reference views is shown in the first row. Ground-truth poses are visualized in black, and predicted poses are aligned to the ground truth via an optimal similarity transform. E-RayZer outperforms baselines in pose accuracy, demonstrating its grounded 3D understanding. While RayZer typically produces high-quality novel views, it often exhibits grid-like artifacts in low-texture regions (highlighted with red boxes), likely due to its latent-rendering formulation.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/E-RayZer/images/supp_comparison.png" width="100%"/>
+        </div>
+        <!--/ Subsection. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="video-results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Video Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            We provide video comparisons with SPFSplat and RayZer. Given all input images, each method infers a scene representation from the reference views (shown at the bottom), and the videos are generated by rendering these learned representations along an interpolated camera trajectory derived from the predicted target-view cameras. The trajectory is arranged such that correct renderings should exhibit smooth transitions.
+          </p>
+          <p>
+            We observe that SPFSplat struggles with wide-baseline inputs. RayZer can synthesize high-quality novel views, but frequently introduces <strong>visible artifacts</strong> (particularly noticeable in examples&nbsp;4 and&nbsp;8) -- especially in regions with <strong>high uncertainty, occlusion, or large viewpoint changes</strong>. These artifacts typically manifest as flickering surfaces and unstable geometry. In contrast, E-RayZer produces more accurate and stable renderings, benefiting from its explicit 3D geometry representation. Note that SPFSplat is trained only on RealEstate10K, so the first three examples are considered in-distribution for this baseline.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section has-background-light">
+  <div class="container">
+    <div class="results-carousel-wrapper">
+      <div class="glide results-carousel" id="results-carousel">
+        <div class="glide__track" data-glide-el="track">
+          <ul class="glide__slides">
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/realestate_000027.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/realestate_000068.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/realestate_000219.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/dl3dv_000005.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/dl3dv_000012.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/dl3dv_000026.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/dl3dv_000028.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+            <li class="glide__slide">
+              <div class="results-slide">
+                <video autoplay muted loop playsinline>
+                  <source src="./research/E-RayZer/videos/dl3dv_000037.mp4" type="video/mp4">
+                </video>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="glide__arrows results-carousel__arrows" data-glide-el="controls">
+          <button class="glide__arrow glide__arrow--left" data-glide-dir="<" aria-label="Previous video">
+            <img src="./resources/arrow-left-circle-fill.svg" alt="Previous">
+          </button>
+          <button class="glide__arrow glide__arrow--right" data-glide-dir=">" aria-label="Next video">
+            <img src="./resources/arrow-right-circle-fill.svg" alt="Next">
+          </button>
+        </div>
+        <div class="glide__bullets results-carousel__bullets" data-glide-el="controls[nav]">
+          <button class="glide__bullet" data-glide-dir="=0" aria-label="Go to video 1">1</button>
+          <button class="glide__bullet" data-glide-dir="=1" aria-label="Go to video 2">2</button>
+          <button class="glide__bullet" data-glide-dir="=2" aria-label="Go to video 3">3</button>
+          <button class="glide__bullet" data-glide-dir="=3" aria-label="Go to video 4">4</button>
+          <button class="glide__bullet" data-glide-dir="=4" aria-label="Go to video 5">5</button>
+          <button class="glide__bullet" data-glide-dir="=5" aria-label="Go to video 6">6</button>
+          <button class="glide__bullet" data-glide-dir="=6" aria-label="Go to video 7">7</button>
+          <button class="glide__bullet" data-glide-dir="=7" aria-label="Go to video 8">8</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Discussion</h2>
+    <p>
+      We propose E-RayZer, a multi-view 3D model for learning geometrically grounded representations via self-supervised 3D reconstruction. E-RayZer demonstrates better performance against prior unsupervised methods and is even comparable with supervised methods. Extensive experimental results demonstrate E-RayZer pre-training benefits supervised models and other 3D downstream tasks, establishing it as a scalable 3D-aware visual pre-training framework.
+    </p>
+  </div>
+</section>
+
+<section class="column" id="Acknowledgements">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">Acknowledgements</h2>
+    <p>
+      The work is partially done during Qitao Zhao's internship at Adobe Research.
+    </p>
+    <p>
+      This work was also supported by Intelligence Advanced Research Projects Activity (IARPA) via Department of Interior/Interior Business Center (DOI/IBC) contract number 140D0423C0074. The U.S. Government is authorized to reproduce and distribute reprints for Governmental purposes notwithstanding any copyright annotation thereon. Disclaimer: The views and conclusions contained herein are those of the authors and should not be interpreted as necessarily representing the official policies or endorsements, either expressed or implied, of IARPA, DOI/IBC, or the U.S. Government.
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This site extends the <a href="https://github.com/nerfies/nerfies.github.io">nerfies.github.io</a> template, and the interactive 3D viewer is adapted from <a href="https://vgg-t.github.io/">VGGT</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
