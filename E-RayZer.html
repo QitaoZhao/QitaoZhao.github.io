@@ -46,7 +46,7 @@
             <span class="author-block"><a href="https://kai-46.github.io/website/" target="_blank" rel="noreferrer">Kai Zhang</a><sup>2</sup></span>
           </div>
           <div class="is-size-4 publication-authors">
-            <span class="author-block"><a href="http://www.kalyans.org/" target="_blank" rel="noreferrer">Kalyan Sunkavalli</a><sup>2</sup></span>
+            <span class="author-block"><a href="https://research.adobe.com/person/kalyan-sunkavalli/" target="_blank" rel="noreferrer">Kalyan Sunkavalli</a><sup>2</sup></span>
             <span class="author-block"><a href="https://shubhtuls.github.io/" target="_blank" rel="noreferrer">Shubham Tulsiani</a><sup>1*</sup></span>
             <span class="author-block"><a href="https://hwjiang1510.github.io/" target="_blank" rel="noreferrer">Hanwen Jiang</a><sup>2*</sup></span>
           </div>
@@ -320,6 +320,58 @@
         </div>
         <div class="content has-text-centered">
           <img src="./research/E-RayZer/images/supp_comparison.png" width="100%"/>
+        </div>
+        <!--/ Subsection. -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Quantitative Comparisons on Downstream Tasks</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            <strong>Probing 3D Spatial Awareness of Learned Representations on Multi-view Depth and Pose Estimation.</strong><br> We evaluate the learned representations via both frozen-backbone and fully supervised finetuning on ScanNet++ and BlendedMVS, which are not included in pre-training for any model. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>. The experiments only use the <em>encoders</em> of RayZer and <em>ours</em>.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/E-RayZer/images/downstream_pose_depth.png" width="60%"/>
+        </div>
+        
+        <div class="content has-text-justified">
+          <p>
+            <strong>Probing 2.5D Spatial Awareness of Learned Representations on Pairwise Flow Estimation.</strong> We evaluate on StaticThings3D, an out-of-distribution synthetic dataset. All models are fully finetuned under flow supervision. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/E-RayZer/images/downstream_pairwise_flow.png" width="60%"/>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Ablation Study on Data Mixing and Comparisons with Supervised VGGT</h2>
+
+        <!-- Subsection. -->
+        <!-- <h3 class="title is-4">Quantitative Comparisons of Novel-view Synthesis and Pose estimation</h3> -->
+        <div class="content has-text-justified">
+          <p>
+            We compare our E-RayZer with supervised VGGT<sup>*</sup> on varying training data settings. We color-rank the results from red to yellow <strong>for each model itself</strong> across training data, thus <strong>the color distribution reflects their scaling behavior</strong>.
+            We also <u>underline</u> the results where <span style="color: rgb(89, 204, 89);">self-supervised E-RayZer</span>
+            outperforms <span style="color: #CBCBFB;">supervised VGGT<sup>*</sup></span> (for each training data).
+          </p>  
+        </div>
+        <div class="content has-text-centered">
+          <img src="./research/E-RayZer/images/data_mixing.png" width="100%"/>
         </div>
         <!--/ Subsection. -->
       </div>
