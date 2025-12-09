@@ -347,21 +347,34 @@
 
         <div class="content has-text-justified">
           <p>
-            <strong>Probing 3D Spatial Awareness of Learned Representations on Multi-view Depth and Pose Estimation.</strong><br> We evaluate the learned representations via both frozen-backbone and fully supervised finetuning on ScanNet++ and BlendedMVS, which are not included in pre-training for any model. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>. The experiments only use the <em>encoders</em> of RayZer and <em>ours</em>.
+            <strong> (Left) Probing 3D Spatial Awareness of Learned Representations on Multi-view Depth and Pose Estimation.</strong><br>
+            We evaluate the learned representations via both frozen-backbone and fully supervised finetuning on ScanNet++ and BlendedMVS, which are not included in pre-training for any model. The best results are shown in
+            <strong>bold</strong>, and the second-best are <u>underlined</u>. The experiments only use the <em>encoders</em> of RayZer and <em>ours</em>.
           </p>
-        </div>
-        <div class="content has-text-centered">
-          <img src="./research/E-RayZer/images/downstream_pose_depth.png" width="60%"/>
-        </div>
-        
-        <div class="content has-text-justified">
           <p>
-            <strong>Probing 2.5D Spatial Awareness of Learned Representations on Pairwise Flow Estimation.</strong> We evaluate on StaticThings3D, an out-of-distribution synthetic dataset. All models are fully finetuned under flow supervision. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>.
+            <strong> (Right) Probing 2.5D Spatial Awareness of Learned Representations on Pairwise Flow Estimation.</strong><br>
+            We evaluate on StaticThings3D, an out-of-distribution synthetic dataset. All models are fully finetuned under flow supervision. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>.
           </p>
         </div>
-        <div class="content has-text-centered">
-          <img src="./research/E-RayZer/images/downstream_pairwise_flow.png" width="60%"/>
+
+        <!-- two figures side by side -->
+        <div class="columns is-vcentered">
+          <div class="column has-text-centered">
+            <img
+              src="./research/E-RayZer/images/downstream_pose_depth.png"
+              style="max-width: 100%;"
+              alt="Downstream depth and pose metrics."
+            />
+          </div>
+          <div class="column has-text-centered">
+            <img
+              src="./research/E-RayZer/images/downstream_pairwise_flow.png"
+              style="max-width: 100%;"
+              alt="Downstream pairwise flow metrics."
+            />
+          </div>
         </div>
+
       </div>
     </div>
   </div>
