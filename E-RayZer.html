@@ -244,6 +244,28 @@
         textSpan.textContent = '▶ Additional Video Results';
       }
     }
+    
+    function toggleFeatureVis(button) {
+      button.classList.toggle('active');
+      const content = document.getElementById('feature-vis-content');
+      content.classList.toggle('show');
+      
+      const textSpan = button.querySelector('span:first-child');
+      if (content.classList.contains('show')) {
+        textSpan.textContent = '▼ Hide Feature Visualization';
+        // Initialize glide if not already
+        if (!window.featureGlideInitialized) {
+          new Glide('#feature-carousel', {
+            type: 'slider',
+            perView: 1,
+            gap: 0
+          }).mount();
+          window.featureGlideInitialized = true;
+        }
+      } else {
+        textSpan.textContent = '▶ Feature Visualization';
+      }
+    }
   </script>
 </head>
 
@@ -643,7 +665,7 @@
   </div>
 </section>
 
-<section class="section" id="downstream-tasks">
+<section class="section" id="downstream-tasks" style="padding-bottom: 1rem;">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -661,23 +683,61 @@
         </div>
 
         <!-- two figures side by side -->
-        <div class="columns is-vcentered">
+        <div class="columns is-vcentered" style="max-width: 80%; margin: 0 auto;">
           <div class="column has-text-centered">
             <img
               src="./research/E-RayZer/images/downstream_pose_depth.png"
-              style="max-width: 100%;"
+              style="width: 100%;"
               alt="Downstream depth and pose metrics."
             />
           </div>
           <div class="column has-text-centered">
             <img
               src="./research/E-RayZer/images/downstream_pairwise_flow.png"
-              style="max-width: 100%;"
+              style="width: 100%;"
               alt="Downstream pairwise flow metrics."
             />
           </div>
         </div>
 
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feature Visualization Section -->
+<section class="section" id="feature-vis-section" style="padding-top: 0rem; padding-bottom: 2rem;">
+  <div class="container is-max-desktop">
+    <div class="collapsible-toggle" onclick="toggleFeatureVis(this)">
+      <span>▶ Feature Visualization</span>
+      <span class="arrow">↓</span>
+    </div>
+    <div class="collapsible-content" id="feature-vis-content">
+      <div class="collapsible-content-inner">
+        <div class="content" style="margin-bottom: 1rem; text-align: left;">
+          <p>We visualize the features of RayZer and E-RayZer using PCA. E-RayZer learns spatially coherent image representations with better object discrimination.</p>
+        </div>
+        <div class="results-carousel-wrapper">
+          <div class="glide results-carousel" id="feature-carousel">
+            <div class="glide__track" data-glide-el="track">
+              <ul class="glide__slides">
+                <li class="glide__slide"><div class="results-slide" style="height: auto !important; min-height: 400px;"><img src="./research/E-RayZer/images/feat1.png" style="width: 100%; height: auto; object-fit: contain;" /></div></li>
+                <li class="glide__slide"><div class="results-slide" style="height: auto !important; min-height: 400px;"><img src="./research/E-RayZer/images/feat2.png" style="width: 100%; height: auto; object-fit: contain;" /></div></li>
+                <li class="glide__slide"><div class="results-slide" style="height: auto !important; min-height: 400px;"><img src="./research/E-RayZer/images/feat3.png" style="width: 100%; height: auto; object-fit: contain;" /></div></li>
+                <li class="glide__slide"><div class="results-slide" style="height: auto !important; min-height: 400px;"><img src="./research/E-RayZer/images/feat4.png" style="width: 100%; height: auto; object-fit: contain;" /></div></li>
+                <li class="glide__slide"><div class="results-slide" style="height: auto !important; min-height: 400px;"><img src="./research/E-RayZer/images/feat5.png" style="width: 100%; height: auto; object-fit: contain;" /></div></li>
+              </ul>
+            </div>
+            <div class="glide__arrows" data-glide-el="controls">
+              <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                <img src="./resources/arrow-left-circle-fill.svg" />
+              </button>
+              <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                <img src="./resources/arrow-right-circle-fill.svg" />
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -695,6 +755,9 @@
             We also <u>underline</u> the results where <span style="color: rgb(89, 204, 89);">self-supervised E-RayZer</span>
             outperforms <span style="color: #CBCBFB;">supervised VGGT<sup>*</sup></span>.
           </p>  
+          <p>
+            Besides, E-RayZer also helps the supervised models (last row of each data), demonstrating an effective self-supervised pre-training and supervised finetuning paradigm.
+          </p>
         </div>
         <div class="content has-text-centered">
           <img src="./research/E-RayZer/images/data_mixing.png" width="100%"/>
