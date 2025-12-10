@@ -7,6 +7,34 @@ body {
   overflow: hidden; 
 }
 
+.section-subtitle {
+  margin-top: -0.3rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
+  text-transform: none;
+  letter-spacing: 0.14em;
+  font-size: 1rem;
+  font-family: 'Castoro', 'Google Sans', serif;
+  font-weight: 600;
+  font-style: italic;
+  color: #2f6b8f;
+}
+
+.section-subtitle--note {
+  margin-top: 1rem;
+  margin-bottom: 0.35rem;
+  text-align: left;
+  text-transform: none;
+  letter-spacing: 0.08em;
+  font-size: 0.95rem;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  color: #2f6b8f;
+  border-left: 3px solid #bcd8e5;
+  padding-left: 0.65rem;
+}
+
 
 .footer .icon-link {
     font-size: 25px;

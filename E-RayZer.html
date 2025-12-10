@@ -10,7 +10,6 @@
   <link rel="icon" type="image/png"
         href="./research/E-RayZer/icon.png">
 
-
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
   <link rel="stylesheet" href="./research/E-RayZer/static/css/bulma.min.css">
   <link rel="stylesheet" href="./research/E-RayZer/static/css/bulma-carousel.min.css">
@@ -119,10 +118,10 @@
       </p>
       <ul class="tldr-list">
         <li>
-          E-RayZer is the first <strong>self-supervised, feedforward 3D Gaussian Splatting reconstruction model</strong> trained from scratch with zero 3D annotation.
+          E-RayZer is the first <strong>self-supervised, feedforward 3D Gaussian Splatting reconstruction model</strong> trained from scratch with zero 3D annotation of camera and geometry.
         </li>
         <li>
-          It <strong>outperforms prior visual representation learners</strong> such as DINOv3, CroCo v2, VideoMAE V2, and Perception Encoder on downstream 3D tasks.
+          It serves as a <strong>spatial visual representation learner</strong>, outperforming DINOv3, CroCo v2, VideoMAE V2, and etc., on downstream tasks that require 3D awareness.
         </li>
         <li>
           Relative to the earlier implicit <u>self-supervised</u> counterpart RayZer, E-RayZer delivers <strong>stronger 3D understanding</strong> with markedly improved unsupervised camera pose estimation and 3D downstream fine-tuning results.
@@ -140,7 +139,7 @@
     <div class="hero-body">
       <img src="./research/E-RayZer/images/erayzer_teaser.png" alt="Teaser figure."/>
       <h5 class="">
-        <strong>tl;dr</strong> We propose <strong>E-RayZer</strong>, a <strong>self-supervised</strong> 3D Vision model predicting camera poses and scene geometry as 3D Gaussians. The use of <strong>explicit</strong> 3D geometry yields more geometrically grounded poses compared to its implicit counterpart, RayZer: They are comparable to and sometimes even better than those from supervised state-of-the-art model VGGT. Furthermore, E-RayZer also serves as a self-supervised <strong>visual pre-training</strong> framework, with learned representations that transfer effectively to downstream tasks requiring 3D understanding.
+        We propose <strong>E-RayZer</strong>, a <strong>self-supervised</strong> 3D Vision model predicting camera poses and scene geometry as 3D Gaussians. The use of <strong>explicit</strong> 3D geometry yields more geometrically grounded poses compared to its implicit counterpart, RayZer: They are comparable to and sometimes even better than those from supervised state-of-the-art model VGGT. Furthermore, E-RayZer also serves as a self-supervised <strong>visual pre-training</strong> framework, with learned representations that transfer effectively to downstream tasks requiring 3D understanding.
       </h5>
     </div>
   </div>
@@ -337,10 +336,9 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Qualitative Comparisons on NVS and Pose estimation</h2>
+        <h2 class="title is-3">Qualitative Comparisons with Prior Self-supervised Methods</h2>
+        <p class="subtitle is-5 section-subtitle">on Novel View Synthesis and Pose Estimation</p>
 
-        <!-- Subsection. -->
-        <!-- <h3 class="title is-4">Quantitative Comparisons of Novel-view Synthesis and Pose estimation</h3> -->
         <div class="content has-text-justified">
           <p>
             We show results for both novel-view synthesis (left) and pose estimation (right). The temporal order of the reference views is shown in the first row. Ground-truth poses are visualized in black, and predicted poses are aligned to the ground truth via an optimal similarity transform. E-RayZer outperforms baselines in pose accuracy, demonstrating its grounded 3D understanding. While RayZer typically produces high-quality novel views, it often exhibits grid-like artifacts in low-texture regions (highlighted with red boxes), likely due to its latent-rendering formulation.
@@ -359,16 +357,16 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Quantitative Comparisons on Downstream Tasks</h2>
+        <h2 class="title is-3">Quantitative Comparisons with Representation Learners</h2>
 
         <div class="content has-text-justified">
+          <p class="subtitle is-5 section-subtitle">(Left) Results on 3D Tasks (Multi-view Depth and Pose Estimation).</p>
           <p>
-            <strong> (Left) Probing 3D Spatial Awareness of Learned Representations on Multi-view Depth and Pose Estimation.</strong><br>
             We evaluate the learned representations via both frozen-backbone and fully supervised finetuning on ScanNet++ and BlendedMVS, which are not included in pre-training for any model. The best results are shown in
             <strong>bold</strong>, and the second-best are <u>underlined</u>. The experiments only use the <em>encoders</em> of RayZer and <em>ours</em>.
-          </p>
+          </p><br>
+          <p class="subtitle is-5 section-subtitle">(Right) Results on 2.5 Task (Pairwise Flow Estimation).</p>
           <p>
-            <strong> (Right) Probing 2.5D Spatial Awareness of Learned Representations on Pairwise Flow Estimation.</strong><br>
             We evaluate on StaticThings3D, an out-of-distribution synthetic dataset. All models are fully finetuned under flow supervision. The best results are shown in <strong>bold</strong>, and the second-best are <u>underlined</u>.
           </p>
         </div>
@@ -400,13 +398,14 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Ablation Study on Data Mixing and Comparisons with Supervised VGGT</h2>
+        <h2 class="title is-3">Quantitative Comparisons with Supervised VGGT*</h2>
+        <p class="section-subtitle section-subtitle--note">
+            E-RayZer performs on par with or even outperforms supervised VGGT* on pose estimation, while showing a similar scaling trend. Furthormore, initializing supervised models with E-RayZer pre-trained weights consistently improves performance.
+          </p>
 
-        <!-- Subsection. -->
-        <!-- <h3 class="title is-4">Quantitative Comparisons of Novel-view Synthesis and Pose estimation</h3> -->
         <div class="content has-text-justified">
           <p>
-            We compare our E-RayZer with supervised VGGT<sup>*</sup> on varying training data settings. We color-rank the results from red to yellow <strong>for each model itself</strong> across training data, thus <strong>the color distribution reflects their scaling behavior</strong>.
+            We compare our E-RayZer with supervised VGGT<sup>*</sup> (see paper for more details) on varying training data settings. We color-rank the results from red to yellow <strong>for each model itself</strong> across training data, thus <strong>the color distribution reflects their scaling behavior</strong>.
             We also <u>underline</u> the results where <span style="color: rgb(89, 204, 89);">self-supervised E-RayZer</span>
             outperforms <span style="color: #CBCBFB;">supervised VGGT<sup>*</sup></span> (for each training data).
           </p>  
