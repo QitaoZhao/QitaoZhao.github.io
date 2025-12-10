@@ -107,6 +107,34 @@
   </div>
 </section>
 
+<section class="section tldr-section">
+  <div class="container is-max-desktop">
+    <div class="tldr-card">
+      <div class="tldr-heading">
+        <span class="tldr-pill">tl;dr</span>
+        <h2 class="title is-4" style="margin:0;">Key Takeaways</h2>
+      </div>
+      <p class="tldr-subtitle">
+        We systematically study E-RayZer across training data scales and summarize the main contributions below.
+      </p>
+      <ul class="tldr-list">
+        <li>
+          E-RayZer is the first <strong>self-supervised, feedforward 3D Gaussian Splatting reconstruction model</strong> trained from scratch with zero 3D annotation.
+        </li>
+        <li>
+          It <strong>outperforms prior visual representation learners</strong> such as DINOv3, CroCo v2, VideoMAE V2, and Perception Encoder on downstream 3D tasks.
+        </li>
+        <li>
+          Relative to the earlier implicit <u>self-supervised</u> counterpart RayZer, E-RayZer delivers <strong>stronger 3D understanding</strong> with markedly improved unsupervised camera pose estimation and 3D downstream fine-tuning results.
+        </li>
+        <li>
+          Compared with state-of-the-art <u>supervised</u> methods like VGGT, E-RayZer achieves <strong>on-par or better performance</strong> and similar scaling trends despite being fully self-supervised.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
@@ -190,85 +218,74 @@
     </model-viewer>
   </div>
   <div class="columns is-centered">
-    <div class="thumbnail-container" id="thumbnail-qualitative">
-      <img src="./research/E-RayZer/3D/dl3dv_000019.png" data-glb="./research/E-RayZer/3D/dl3dv_000019.glb">
-      <img src="./research/E-RayZer/3D/dl3dv_000004.png" data-glb="./research/E-RayZer/3D/dl3dv_000004.glb">
-      <img src="./research/E-RayZer/3D/dl3dv_000007.png" data-glb="./research/E-RayZer/3D/dl3dv_000007.glb">
-      <img src="./research/E-RayZer/3D/dl3dv_000017.png" data-glb="./research/E-RayZer/3D/dl3dv_000017.glb">
-      <img src="./research/E-RayZer/3D/dl3dv_000041.png" data-glb="./research/E-RayZer/3D/dl3dv_000041.glb">
-      <img src="./research/E-RayZer/3D/wildrgbd_000002.png" data-glb="./research/E-RayZer/3D/wildrgbd_000002.glb">
-      <img src="./research/E-RayZer/3D/wildrgbd_000018.png" data-glb="./research/E-RayZer/3D/wildrgbd_000018.glb">
-      <img src="./research/E-RayZer/3D/blendedmvs_000107.png" data-glb="./research/E-RayZer/3D/blendedmvs_000107.glb">
+    <div class="thumbnail-slider">
+      <button class="thumbnail-nav thumbnail-nav--prev" aria-label="Scroll thumbnails left" data-direction="prev">
+        <span>&larr;</span>
+      </button>
+      <div class="thumbnail-container" id="thumbnail-qualitative">
+        <img src="./research/E-RayZer/3D/dl3dv_000019.png" data-glb="./research/E-RayZer/3D/dl3dv_000019.glb">
+        <img src="./research/E-RayZer/3D/dl3dv_000004.png" data-glb="./research/E-RayZer/3D/dl3dv_000004.glb">
+        <img src="./research/E-RayZer/3D/dl3dv_000007.png" data-glb="./research/E-RayZer/3D/dl3dv_000007.glb">
+        <img src="./research/E-RayZer/3D/dl3dv_000017.png" data-glb="./research/E-RayZer/3D/dl3dv_000017.glb">
+        <img src="./research/E-RayZer/3D/dl3dv_000041.png" data-glb="./research/E-RayZer/3D/dl3dv_000041.glb">
+        <img src="./research/E-RayZer/3D/wildrgbd_000002.png" data-glb="./research/E-RayZer/3D/wildrgbd_000002.glb">
+        <img src="./research/E-RayZer/3D/wildrgbd_000018.png" data-glb="./research/E-RayZer/3D/wildrgbd_000018.glb">
+        <img src="./research/E-RayZer/3D/blendedmvs_000107.png" data-glb="./research/E-RayZer/3D/blendedmvs_000107.glb">
+      </div>
+      <button class="thumbnail-nav thumbnail-nav--next" aria-label="Scroll thumbnails right" data-direction="next">
+        <span>&rarr;</span>
+      </button>
+      <div class="thumbnail-fade thumbnail-fade--left"></div>
+      <div class="thumbnail-fade thumbnail-fade--right"></div>
     </div>
   </div>
-  <style>
-    .thumbnail-container img, .thumbnail-container video {
-      transition: all 0.3s ease;
-      border: 3px solid transparent;
-      cursor: pointer;
-    }
-    .thumbnail-selected {
-      transform: scale(1.2);
-      border: 6px solid #79b4f2 !important; 
-      box-shadow: 0 0 10px rgba(121, 180, 242, 0.5);
-      z-index: 10;
-      position: relative;
-    }
-    
-    /* New styles for responsive horizontal gallery */
-    .thumbnail-container {
-      display: flex;
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      gap: 10px;
-      padding: 10px 0;
-      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-      scrollbar-width: thin;
-      align-items: center;
-    }
-    
-    .thumbnail-container img, 
-    .thumbnail-container video {
-      flex: 0 0 auto;
-      height: auto;
-      width: 200px; /* Consistent width */
-      object-fit: cover;
-      max-width: none;
-    }
-    
-    /* Custom scrollbar styling */
-    .thumbnail-container::-webkit-scrollbar {
-      height: 6px;
-    }
-    
-    .thumbnail-container::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: 10px;
-    }
-    
-    .thumbnail-container::-webkit-scrollbar-thumb {
-      background: #888;
-      border-radius: 10px;
-    }
-    
-    .thumbnail-container::-webkit-scrollbar-thumb:hover {
-      background: #555;
-    }
-    
-    /* Adjust for smaller screens */
-    @media (max-width: 768px) {
-      .thumbnail-container img,
-      .thumbnail-container video {
-        height: 100px;
-      }
-    }
-  </style>
   <script>
     // The problem is here - you're trying to select an element that doesn't exist
     // document.querySelector('#thumbnail-qualitative img[src="research/qualitative/college.png"]').classList.add('thumbnail-selected');
     
     // Instead, select the first element that actually exists in your thumbnail container
     document.addEventListener('DOMContentLoaded', function() {
+      const thumbnailContainer = document.getElementById('thumbnail-qualitative');
+      const sliderButtons = document.querySelectorAll('.thumbnail-nav');
+      const fades = document.querySelectorAll('.thumbnail-fade');
+
+      const updateSliderAffordances = () => {
+        if (!thumbnailContainer) return;
+        const maxScrollLeft = thumbnailContainer.scrollWidth - thumbnailContainer.clientWidth;
+        const atStart = thumbnailContainer.scrollLeft <= 4;
+        const atEnd = thumbnailContainer.scrollLeft >= maxScrollLeft - 4;
+
+        sliderButtons.forEach(btn => {
+          if (btn.dataset.direction === 'prev') {
+            btn.classList.toggle('is-disabled', atStart);
+          } else {
+            btn.classList.toggle('is-disabled', atEnd);
+          }
+        });
+
+        fades.forEach(fade => {
+          if (fade.classList.contains('thumbnail-fade--left')) {
+            fade.style.opacity = atStart ? '0' : '1';
+          } else {
+            fade.style.opacity = atEnd ? '0' : '1';
+          }
+        });
+      };
+
+      sliderButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          if (!thumbnailContainer) return;
+          const direction = button.dataset.direction === 'next' ? 1 : -1;
+          const scrollAmount = thumbnailContainer.clientWidth * 0.7;
+          thumbnailContainer.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        });
+      });
+
+      if (thumbnailContainer) {
+        thumbnailContainer.addEventListener('scroll', updateSliderAffordances, { passive: true });
+      }
+      window.addEventListener('resize', updateSliderAffordances);
+
       // Select the first element in the thumbnail container (video or image)
       const firstThumbnail = document.querySelector('#thumbnail-qualitative video, #thumbnail-qualitative img');
       if (firstThumbnail) {
@@ -311,6 +328,7 @@
           });
         });
       });
+      updateSliderAffordances();
     });
   </script>
 </div>
