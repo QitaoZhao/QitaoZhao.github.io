@@ -23,188 +23,6 @@
   <link rel="stylesheet" href="./research/E-RayZer/static/css/index.css">
   <link rel="icon" href="./research/E-RayZer/images/favicon.svg">
 
-  <style>
-    /* 作者链接样式 */
-    .publication-authors a {
-      color: #555 !important;
-      text-decoration: none !important;
-    }
-    .publication-authors a:hover {
-      color: #333 !important;
-      text-decoration: underline !important;
-    }
-    
-    /* 2. 主标题文字阴影 */
-    .publication-title {
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    /* 3. 按钮样式美化 */
-    .publication-links .button {
-      border: none !important;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-      transition: all 0.2s ease;
-    }
-    .publication-links .button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    
-    /* 4. 优化间距 */
-    .hero-body {
-      padding-top: 4rem !important;
-      padding-bottom: 2rem !important;
-    }
-    .publication-title {
-      margin-bottom: 0.5rem !important;
-    }
-    .publication-authors {
-      margin-bottom: 0.3rem !important;
-    }
-    .publication-links {
-      margin-top: 1.5rem !important;
-    }
-    
-    /* tldr 列表字体调小 + 交互卡片效果 */
-    .tldr-list {
-      font-size: 0.95rem;
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-    }
-    .tldr-list li {
-      margin-bottom: 0.75rem;
-      padding: 0.75rem 1rem 0.75rem 2.5rem;
-      border-radius: 8px;
-      border: 2px solid transparent;
-      background: linear-gradient(#fff, #fff) padding-box,
-                  linear-gradient(135deg, #e0e0e0, #f5f5f5) border-box;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-      line-height: 1.6;
-    }
-    .tldr-list li::before {
-      content: "•";
-      position: absolute;
-      left: 1rem;
-      top: 50%; transform: translateY(-50%);
-      color: #3273dc;
-      font-size: 1em;
-      line-height: 1;
-    }
-    .tldr-list li:hover {
-      border: 2px solid transparent;
-      background: linear-gradient(#fff, #fff) padding-box,
-                  linear-gradient(135deg, #3273dc, #c9a227) border-box;
-      box-shadow: 0 4px 15px rgba(50, 115, 220, 0.2);
-      transform: translateX(4px);
-    }
-    .tldr-list li::after {
-      content: "↓ click to jump";
-      position: absolute;
-      right: 0.75rem;
-      bottom: 0.4rem;
-      
-      font-size: 0.75rem;
-      color: #999;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .tldr-list li:hover::after {
-      opacity: 1;
-      color: #3273dc;
-    }
-    
-    /* Section titles centered with shadow */
-    .section .title {
-      text-align: center;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    /* Section subtitles styling */
-    .section-subtitle {
-      text-align: center;
-      color: #666 !important;
-      font-style: normal;
-      font-weight: 600 !important;
-      font-family: inherit;
-      font-size: 1.1rem !important;
-      margin-top: -0.5rem !important;
-      margin-bottom: 1.5rem !important;
-    }
-    .section-subtitle--note {
-      text-align: center;
-      color: #555;
-      font-size: 0.95rem;
-      max-width: 800px;
-      margin: 0 auto 1.5rem auto;
-      line-height: 1.6;
-    }
-    
-    /* Collapsible section */
-    .collapsible-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      cursor: pointer;
-      padding: 1rem 1.5rem;
-      margin: 2rem auto 0 auto;
-      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-      border: 2px solid #dee2e6;
-      border-radius: 8px;
-      color: #3273dc;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      max-width: 400px;
-    }
-    .collapsible-toggle:hover {
-      background: linear-gradient(135deg, #e9ecef, #dee2e6);
-      border-color: #3273dc;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(50, 115, 220, 0.2);
-    }
-    .collapsible-toggle .arrow {
-      transition: transform 0.3s ease;
-    }
-    .collapsible-toggle.active .arrow {
-      transform: rotate(180deg);
-    }
-    .collapsible-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out;
-      background-color: #f5f5f5;
-      margin-top: 1rem;
-      border-radius: 8px;
-    }
-    .collapsible-content.show {
-      max-height: 2000px;
-    }
-    .collapsible-content-inner {
-      padding: 2rem 1rem;
-    }
-    
-    /* Fix video sizing and centering in collapsible carousel */
-    #results-carousel-collapsed {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    #results-carousel-collapsed .results-slide {
-      background: transparent !important;
-      height: auto !important;
-    }
-    #results-carousel-collapsed .results-slide video {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      background: transparent !important;
-    }
-
-  </style>
-
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./research/E-RayZer/static/js/fontawesome.all.min.js"></script>
@@ -268,7 +86,6 @@
     }
   </script>
 </head>
-
 
 <section class="hero">
   <div class="hero-body">
@@ -367,16 +184,16 @@
       </div>
       <ul class="tldr-list">
         <li data-target="#method" onclick="smoothScroll(this)">
-          E-RayZer is the first <span style="color: #3273dc; font-weight: 700;">self-supervised, feedforward 3D Gaussian Splatting reconstruction model</span> trained from scratch with zero 3D annotation of camera and geometry.
+          E-RayZer is the first <span style="color: #3273dc; font-weight: 700;">self-supervised, feedforward 3D Gaussian splatting reconstruction model</span> trained from scratch with zero 3D annotation of camera and geometry.
         </li>
         <li data-target="#downstream-tasks" onclick="smoothScroll(this)">
-          E-RayZer's latent image representations outperform DINOv3, CroCo v2, VideoMAE V2, etc., on downstream tasks that require 3D awareness, serving as a <span style="color: #c9a227; font-style: italic; font-weight: 600;">spatial visual pre-training</span>.
+          E-RayZer's latent image representations outperform DINOv3, CroCo v2, VideoMAE V2, etc., on downstream tasks that require 3D awareness, serving as a promising <span style="color: #c9a227; font-style: italic; font-weight: 600;">spatial visual pre-training</span> framework.
         </li>
         <li data-target="#qualitative-comparison" onclick="smoothScroll(this)">
-          Compared with previous <u>self-supervised</u> reconstructors <span style="color: #666;">(e.g., <a href="https://hwjiang1510.github.io/RayZer/" target="_blank" style="color: #666; text-decoration: none;" onclick="event.stopPropagation();">RayZer</a>)</span>, E-RayZer is more geometrically correct.
+          Compared with previous <u>self-supervised</u> reconstructors <span style="color: #666;">(e.g., <a href="https://hwjiang1510.github.io/RayZer/" target="_blank" style="color: #666; text-decoration: none;" onclick="event.stopPropagation();">RayZer</a>)</span>, E-RayZer is more geometrically grounded.
         </li>
         <li data-target="#vggt-comparison" onclick="smoothScroll(this)">
-          Compared with SotA <u>supervised</u> reconstructors <span style="color: #666;">(e.g., VGGT)</span>, E-RayZer achieves <strong>on-par or sometimes better performance</strong> and similar scaling trends despite being fully self-supervised.
+          Compared with SoTA <u>supervised</u> reconstructors <span style="color: #666;">(e.g., VGGT)</span>, E-RayZer achieves <strong>on-par or sometimes better performance</strong> and similar scaling trends despite being fully self-supervised.
         </li>
       </ul>
       <div style="margin-top: 1.5rem;">
@@ -394,7 +211,7 @@
         <h2 class="title is-4">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Self-supervised pre-training has revolutionized foundation models for language, 2D images and videos, but remains largely unexplored for learning 3D-aware representations from multi-view images. In this paper, we present E-RayZer, a self-supervised large 3D Vision model that learns truly 3D-aware representations directly from unlabeled images. Unlike prior self-supervised methods such as RayZer that infer 3D indirectly through latent-space view synthesis, <strong>E</strong>-RayZer operates directly in 3D space, performing self-supervised 3D reconstruction with <strong>Explicit</strong> geometry. This formulation eliminates shortcut solutions and yields representations that are geometrically grounded. To ensure convergence and scalability, we introduce a novel fine-grained learning curriculum that organizes training from easy to hard samples and harmonizes heterogeneous data sources in an entirely unsupervised manner. Experiments demonstrate that E-RayZer significantly outperforms RayZer on pose estimation, matches or sometimes surpasses fully supervised reconstruction models such as VGGT. Furthermore, its learned representations outperform leading visual pre-training models (e.g., DINOv2, CroCo v2, VideoMAE V2, and RayZer) when transferring to 3D downstream tasks, establishing E-RayZer as a new paradigm for 3D-aware visual pre-training.
+            Self-supervised pre-training has revolutionized foundation models for languages, individual 2D images and videos, but remains largely unexplored for learning 3D-aware representations from multi-view images. In this paper, we present E-RayZer, a self-supervised large 3D Vision model that learns truly 3D-aware representations directly from unlabeled images. Unlike prior self-supervised methods such as RayZer that infer 3D indirectly through latent-space view synthesis, <strong>E</strong>-RayZer operates directly in 3D space, performing self-supervised 3D reconstruction with <strong>Explicit</strong> geometry. This formulation eliminates shortcut solutions and yields representations that are geometrically grounded. To ensure convergence and scalability, we introduce a novel fine-grained learning curriculum that organizes training from easy to hard samples and harmonizes heterogeneous data sources in an entirely unsupervised manner. Experiments demonstrate that E-RayZer significantly outperforms RayZer on pose estimation, matches or sometimes surpasses fully supervised reconstruction models such as VGGT. Furthermore, its learned representations outperform leading visual pre-training models (e.g., DINOv3, CroCo v2, VideoMAE V2, and RayZer) when transferring to 3D downstream tasks, establishing E-RayZer as a new paradigm for 3D-aware visual pre-training.
           </p>
         </div>
       </div>
@@ -440,10 +257,9 @@
           <div class="column" style="flex: 0 0 40%;">
             <div class="content has-text-justified">
               <p>
-                <strong>Learning Curriculum:</strong> Directly train the model will lead to failure. 
-                We propose a learning curriculum based on visual overlap between images, organizing training from easy to hard samples and harmonize the heterogeneous data sources when scale up.
-                We approximate visual overlap using DINO embeddings, which demonstrated to be a better proxy than the frame interval.
-              </p>
+                <strong>Learning Curriculum:</strong> Directly training the model from scratch often fails.
+                We propose a learning curriculum based on visual overlap between images, organizing training from easy to hard samples and harmonizing heterogeneous data sources as we scale up.
+                We approximate visual overlap using DINO embeddings, which we find to be a better proxy than frame interval.
             </div>
           </div>
         </div>
@@ -453,14 +269,14 @@
 </section>
 
 
-<section style="background-color: #f5f5f5; padding: 2rem 0;">
+<section class="section" style="background-color: #f5f5f5; padding: 2rem 0;">
 <div class="container is-max-desktop">
   <div class="columns is-centered">
     <div class="column is-full-width">
       <h2 class="title is-4">Interactive 3D Reconstruction Results</h2>
       <div class="content has-text-justified">
         <p>
-         From pure self-supervised learning without any 3D annotations, E-RayZer produces highly accurate 3D reconstructions.
+          Trained purely self-supervised without any 3D annotations, E-RayZer produces highly accurate 3D reconstructions (Gaussian centers visualized as a point cloud).
         </p>
       </div>
     </div>
@@ -609,11 +425,11 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-4">E-RayZer <span style="color: #666; font-weight: 400;">as</span> <span style="color: #3273dc; font-weight: 700;">Self-supervised 3D Reconstructor</span></h2>
-        <p class="subtitle is-5 section-subtitle">(Comparison on Novel View Synthesis and Pose Estimation)</p>
+        <p class="subtitle is-5 section-subtitle">(Comparisons on Novel View Synthesis and Pose Estimation)</p>
 
         <div class="content has-text-justified">
           <p>
-            Ground-truth poses are visualized in black, and predicted poses are aligned to the ground truth via an optimal similarity transform. E-RayZer outperforms baselines in pose accuracy, demonstrating its grounded 3D understanding. While RayZer typically produces high-quality novel views, it often exhibits grid-like artifacts in complex regions (highlighted with red boxes), showing that it actually learns some unwanted video interpolation cues to help view synthesis.
+            Ground-truth poses are visualized in black, and predicted poses are aligned to the ground truth via an optimal similarity transform. E-RayZer outperforms baselines in pose accuracy, demonstrating more geometrically grounded 3D understanding. While RayZer typically produces high-quality novel views, it often exhibits grid-like artifacts in complex regions (highlighted with red boxes), suggesting it may rely on unwanted interpolation cues to facilitate view synthesis.
           </p>
         </div>
         <div class="content has-text-centered">
@@ -668,7 +484,6 @@
             </div>
           </div>
         </div>
-        <!--/ Subsection. -->
       </div>
     </div>
   </div>
@@ -756,16 +571,14 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-4"><span style="color: #3273dc; font-weight: 700;">Self-supervised E-RayZer</span> can <span style="color: #3273dc; font-weight: 700;">outperform</span> and <span style="color: #c9a227; font-style: italic; font-weight: 500;">help</span> supervised 3D Reconstruction</h2>
-        <p class="subtitle is-5 section-subtitle">(And Self-supervised E-RayZer scales well!!!)</p>
+        <h2 class="title is-4"><span style="color: #3273dc; font-weight: 700;">Self-supervised E-RayZer</span> Can <span style="color: #3273dc; font-weight: 700;">Outperform</span> and <span style="color: #c9a227; font-style: italic; font-weight: 500;">Help</span> Supervised 3D Reconstruction</h2>
+        <p class="subtitle is-5 section-subtitle">(And Self-supervised E-RayZer Scales Well!!!)</p>
         <div class="content has-text-justified">
           <p>
-            We compare our E-RayZer with supervised VGGT<sup>*</sup> (re-trained by us using same settings) on varying training data scales. We color-rank the results from red to yellow <strong>for each model itself</strong> across training data, thus <strong>the color distribution reflects their scaling behavior</strong>.
-            We also <u>underline</u> the results where <span style="color: rgb(89, 204, 89);">self-supervised E-RayZer</span>
-            outperforms <span style="color: #CBCBFB;">supervised VGGT<sup>*</sup></span>.
+            We compare E-RayZer against supervised VGGT<sup>*</sup> (re-trained by us under the same settings) across different training data scales. For each model, we color-rank results from red to yellow across data scales, so the color distribution reflects its scaling behavior. We <u>underline</u> cases where <span style="color: rgb(89, 204, 89);">self-supervised E-RayZer</span> outperforms <span style="color: #CBCBFB;">supervised VGGT<sup>*</sup></span>.
           </p>  
           <p>
-            Besides, E-RayZer also helps the supervised models (last row of each data), demonstrating an effective self-supervised pre-training and supervised finetuning paradigm.
+            In addition, E-RayZer improves supervised models when used for pre-training (last row of each data setting), supporting an effective self-supervised pre-training + supervised fine-tuning paradigm.
           </p>
         </div>
         <div class="content has-text-centered">
